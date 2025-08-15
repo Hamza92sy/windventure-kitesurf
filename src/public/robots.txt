@@ -1,0 +1,70 @@
+# 🏄‍♂️ Windventure Robots.txt
+# Configuration SEO pour windventure.fr
+
+User-agent: *
+Allow: /
+
+# Pages principales - haute priorité
+Allow: /packages
+Allow: /book
+Allow: /contact
+Allow: /about
+
+# Blocage des zones sensibles
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /test/
+
+# Blocage des fichiers techniques
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+Disallow: /sitemap.xml
+
+# Sitemap
+Sitemap: https://windventure.fr/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1
+
+# User-agent spécifiques
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Blocage des bots malveillants
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Configuration pour les images
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /public/images/
+Disallow: /
+
+# Configuration pour les mobiles
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/

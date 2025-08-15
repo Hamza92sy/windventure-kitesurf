@@ -1,0 +1,57 @@
+# 🏄‍♂️ WINDVENTURE PRETTIER IGNORE
+# Files and directories to exclude from Prettier formatting
+
+# Dependencies
+node_modules/
+.pnpm/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Deployment
+.vercel/
+.netlify/
+
+# Environment files
+.env*
+
+# Cache and temp files
+.cache/
+*.log
+*.tmp
+temp/
+
+# Config files that should maintain specific formatting
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated files
+*.d.ts.map
+*.js.map
+
+# Documentation that might have specific formatting
+CHANGELOG.md
+LICENSE
+README.md
+
+# Scripts that might have specific formatting
+scripts/
+*.sh
+
+# Public assets
+public/
+favicon.ico
+robots.txt
+sitemap.xml
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

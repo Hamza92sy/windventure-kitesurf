@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production builds
+.next/
+dist/
+build/
+out/
+
+# Development
+.turbo/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing
+coverage/
+.nyc_output
+.playwright/
+.cache/
+
+# Monitoring
+.sentry-cli
+
+# Backups
+.backups/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+.vercel

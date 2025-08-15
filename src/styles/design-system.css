@@ -1,0 +1,452 @@
+/* 🌪️ Windventure Design System - Dakhla Premium */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+/* 🎨 PALETTE DAKHLA PREMIUM */
+:root {
+  /* Primary Colors - Inspired by Dakhla */
+  --dakhla-sand: #f4e4c1;
+  --dakhla-gold: #d4af37;
+  --dakhla-turquoise: #40e0d0;
+  --dakhla-ocean-light: #4a90e2;
+  --dakhla-ocean-deep: #1e3a8a;
+  --dakhla-sunset: #ff6b35;
+  --dakhla-sunrise: #ffd700;
+
+  /* Neutral Palette */
+  --desert-white: #fefbf3;
+  --dune-light: #f7f3e9;
+  --sand-medium: #e8dcc6;
+  --stone-dark: #8b7355;
+  --charcoal: #2c2c2c;
+  --night-deep: #0f0f0f;
+
+  /* Gradients */
+  --gradient-desert: linear-gradient(135deg, var(--dakhla-sand) 0%, var(--dakhla-gold) 100%);
+  --gradient-ocean: linear-gradient(135deg, var(--dakhla-turquoise) 0%, var(--dakhla-ocean-deep) 100%);
+  --gradient-sunset: linear-gradient(135deg, var(--dakhla-sunset) 0%, var(--dakhla-sunrise) 100%);
+  --gradient-hero: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+
+  /* Typography */
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Spacing System */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.25);
+
+  /* Animation */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+/* 🌊 RESET & BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  color: var(--charcoal);
+  background-color: var(--desert-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 📝 TYPOGRAPHY SYSTEM */
+.windventure-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.windventure-title--hero {
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--desert-white);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.windventure-title--section {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--dakhla-ocean-deep);
+  margin-bottom: var(--space-lg);
+}
+
+.windventure-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: var(--stone-dark);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.windventure-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--charcoal);
+}
+
+.windventure-body--large {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+/* 🎯 BUTTON SYSTEM */
+.windventure-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-xl);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.windventure-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-slow);
+}
+
+.windventure-btn:hover::before {
+  left: 100%;
+}
+
+.windventure-btn--primary {
+  background: var(--gradient-ocean);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.windventure-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.windventure-btn--secondary {
+  background: transparent;
+  color: var(--dakhla-ocean-deep);
+  border: 2px solid var(--dakhla-ocean-deep);
+}
+
+.windventure-btn--secondary:hover {
+  background: var(--dakhla-ocean-deep);
+  color: white;
+}
+
+.windventure-btn--hero {
+  background: var(--gradient-sunset);
+  color: white;
+  padding: var(--space-lg) var(--space-2xl);
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-xl);
+}
+
+/* 📐 LAYOUT SYSTEM */
+.windventure-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.windventure-section {
+  padding: var(--space-3xl) 0;
+}
+
+.windventure-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.windventure-grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.windventure-grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.windventure-flex {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.windventure-flex--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.windventure-flex--between {
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 🖼️ CARD SYSTEM */
+.windventure-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+}
+
+.windventure-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.windventure-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.windventure-card__content {
+  padding: var(--space-lg);
+}
+
+.windventure-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--dakhla-ocean-deep);
+  margin-bottom: var(--space-sm);
+}
+
+/* 🌊 ANIMATIONS */
+@keyframes windventure-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes windventure-wave {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.1);
+  }
+}
+
+@keyframes windventure-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.windventure-animate-float {
+  animation: windventure-float 3s ease-in-out infinite;
+}
+
+.windventure-animate-wave {
+  animation: windventure-wave 2s ease-in-out infinite;
+}
+
+.windventure-animate-fade-in {
+  animation: windventure-fade-in 0.6s ease-out forwards;
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  :root {
+    --space-xs: 0.25rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 2.5rem;
+    --space-3xl: 3rem;
+  }
+
+  .windventure-container {
+    padding: 0 var(--space-sm);
+  }
+
+  .windventure-section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .windventure-btn {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1rem;
+  }
+
+  .windventure-btn--hero {
+    padding: var(--space-md) var(--space-xl);
+    font-size: 1.1rem;
+  }
+}
+
+/* 🎨 UTILITY CLASSES */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.mb-xs {
+  margin-bottom: var(--space-xs);
+}
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+.mb-xl {
+  margin-bottom: var(--space-xl);
+}
+
+.mt-xs {
+  margin-top: var(--space-xs);
+}
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+.mt-md {
+  margin-top: var(--space-md);
+}
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+.mt-xl {
+  margin-top: var(--space-xl);
+}
+
+.text-dakhla-gold {
+  color: var(--dakhla-gold);
+}
+.text-dakhla-turquoise {
+  color: var(--dakhla-turquoise);
+}
+.text-dakhla-ocean {
+  color: var(--dakhla-ocean-deep);
+}
+.text-sunset {
+  color: var(--dakhla-sunset);
+}
+
+.bg-gradient-desert {
+  background: var(--gradient-desert);
+}
+.bg-gradient-ocean {
+  background: var(--gradient-ocean);
+}
+.bg-gradient-sunset {
+  background: var(--gradient-sunset);
+}
+
+/* 🌟 SPECIAL EFFECTS */
+.windventure-glow {
+  position: relative;
+}
+
+.windventure-glow::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-ocean);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.windventure-glow:hover::after {
+  opacity: 0.7;
+}
+
+.windventure-parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 🏖️ THEME SPECIFIC COMPONENTS */
+.windventure-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+  z-index: 1;
+}
+
+.windventure-section--sand {
+  background: var(--gradient-desert);
+  color: var(--charcoal);
+}
+
+.windventure-section--ocean {
+  background: var(--gradient-ocean);
+  color: white;
+}
+
+.windventure-divider {
+  height: 1px;
+  background: var(--gradient-ocean);
+  margin: var(--space-xl) 0;
+  opacity: 0.3;
+}

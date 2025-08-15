@@ -1,0 +1,65 @@
+{
+  "compilerOptions": {
+    // 🏄‍♂️ WINDVENTURE TYPESCRIPT CONFIG
+    // Optimized for Next.js 14, strict typing, and performance
+
+    // Library Support
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2022",
+
+    // Module System
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    // TypeScript Strictness
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": false,
+
+    // Compiler Options
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // JSX Configuration
+    "jsx": "preserve",
+
+    // Path Mapping
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/public/*": ["./public/*"]
+    },
+
+    // Next.js Configuration
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+
+  // File Inclusion
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+
+  // File Exclusion
+  "exclude": ["node_modules", ".next", "dist", "build", ".vercel", "scripts", "public", "e2e", "tests", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx", "playwright.config.ts", "vitest.setup.ts", "**/queue/**/*.ts", "**/stripe-webhook/**/*.ts", "**/workflows/**/*.ts"],
+
+  // TypeScript 5.0+ Options
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

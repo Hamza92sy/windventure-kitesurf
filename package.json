@@ -1,0 +1,83 @@
+{
+  "name": "windventure",
+  "version": "1.0.0",
+  "description": "Windventure - Kitesurf & Windsurf Adventures in Dakhla",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "postinstall": "npm run build",
+    "auto-commit": "./src/scripts/auto-commit.sh",
+    "auto-deploy": "./src/scripts/auto-deploy.sh",
+    "watch-changes": "./src/scripts/watch-changes.sh",
+    "verify": "./src/scripts/verify-deployment.sh",
+    "verify-deployment": "./src/scripts/verify-deployment.sh",
+    "backup": "./src/scripts/backup.sh",
+    "clear-cache": "./src/scripts/clear-build-cache.sh",
+    "generate-sitemap": "./src/scripts/generate-sitemap.sh",
+    "watch-all": "./src/scripts/watch-all.sh",
+    "watch-claude": "./watch-claude.sh",
+    "watch-cursor": "./scripts/file-watcher.sh"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.0",
+    "@notionhq/client": "^4.0.1",
+    "@sentry/nextjs": "^10.3.0",
+    "@stripe/stripe-js": "^2.0.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.0",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.292.0",
+    "next": "^14.0.0",
+    "postcss": "^8.4.0",
+    "react": "^18.0.0",
+    "react-datepicker": "^4.21.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.47.0",
+    "react-swipeable": "^7.0.2",
+    "resend": "^6.0.1",
+    "stripe": "^14.0.0",
+    "tailwindcss": "^3.3.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-datepicker": "^4.19.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "playwright": "^1.54.2",
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/windventure.git"
+  },
+  "keywords": [
+    "kitesurf",
+    "windsurf",
+    "dakhla",
+    "morocco",
+    "adventure",
+    "booking"
+  ],
+  "author": "Windventure Team",
+  "license": "MIT"
+}

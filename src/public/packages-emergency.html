@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WindVenture Packages - Emergency Version</title>
+    <style>
+      body {
+        background: #000;
+        color: #00ff41;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .emergency-button {
+        background: #00ff41 !important;
+        color: #000 !important;
+        padding: 20px !important;
+        width: 100% !important;
+        font-size: 24px !important;
+        font-weight: bold !important;
+        border: none !important;
+        cursor: pointer !important;
+        display: block !important;
+        margin: 20px 0 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 0 30px #00ff41 !important;
+        text-decoration: none !important;
+        text-align: center !important;
+      }
+
+      .emergency-button:hover {
+        background: #00dd33 !important;
+        box-shadow: 0 0 40px #00ff41 !important;
+      }
+
+      .package {
+        border: 3px solid #00ff41;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #00ff41;
+        background: rgba(0, 255, 65, 0.1);
+      }
+
+      .fixed-emergency {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 999999;
+        background: #ff0000;
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        border: 3px solid #fff;
+        box-shadow: 0 0 20px #ff0000;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-size: 48px;
+        text-align: center;
+        margin-bottom: 40px;
+        text-shadow: 0 0 20px #00ff41;
+      }
+
+      h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #00ff41;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #00ff41;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-info {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        border: 2px solid #00ff41;
+        border-radius: 10px;
+        background: rgba(0, 255, 65, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bouton fixe d'urgence -->
+    <button class="fixed-emergency" onclick="emergencyContact()">
+      🚨 EMERGENCY CONTACT
+    </button>
+
+    <div class="container">
+      <h1>🌊 WINDVENTURE PACKAGES - EMERGENCY VERSION</h1>
+
+      <!-- Package 1 -->
+      <div class="package">
+        <h2>💎 Beginner Package (Private) - €720</h2>
+        <p>
+          Perfect for those starting their kitesurf journey with personalized
+          one-on-one instruction in Dakhla's perfect lagoon conditions.
+        </p>
+        <a
+          href="https://wa.me/212123456789?text=Hi! I want to book the Beginner Private Package (€720)"
+          class="emergency-button"
+        >
+          🚀 BOOK THIS PACKAGE - BEGINNER PRIVATE
+        </a>
+      </div>
+
+      <!-- Package 2 -->
+      <div class="package">
+        <h2>👥 Beginner Package (Semi-Private) - €1,100</h2>
+        <p>
+          Learn with a small group of fellow beginners in Dakhla's crystal-clear
+          lagoon. Perfect balance of personal attention.
+        </p>
+        <a
+          href="https://wa.me/212123456789?text=Hi! I want to book the Beginner Semi-Private Package (€1,100)"
+          class="emergency-button"
+        >
+          🚀 BOOK THIS PACKAGE - BEGINNER SEMI
+        </a>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="package">
+        <h2>🗺️ Exploration Package - €1,250</h2>
+        <p>
+          Discover multiple kitesurf spots and techniques. Explore Dakhla's
+          legendary spots from White Dune to Dragon Island.
+        </p>
+        <a
+          href="https://wa.me/212123456789?text=Hi! I want to book the Exploration Package (€1,250)"
+          class="emergency-button"
+        >
+          🚀 BOOK THIS PACKAGE - EXPLORATION
+        </a>
+      </div>
+
+      <!-- Package 4 -->
+      <div class="package">
+        <h2>⚡ Combined Package - €1,350</h2>
+        <p>
+          The ultimate kitesurf experience with everything included. Technique
+          mastery with exploration.
+        </p>
+        <a
+          href="https://wa.me/212123456789?text=Hi! I want to book the Combined Package (€1,350)"
+          class="emergency-button"
+        >
+          🚀 BOOK THIS PACKAGE - COMBINED
+        </a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>📞 CONTACT US IMMEDIATELY</h2>
+        <p><strong>Phone:</strong> +212 123 456 789</p>
+        <p>
+          <strong>WhatsApp:</strong>
+          <a href="https://wa.me/212123456789" style="color: #00ff41"
+            >Click here to chat</a
+          >
+        </p>
+        <p><strong>Email:</strong> info@windventure.fr</p>
+        <p><strong>Location:</strong> Dakhla, Morocco</p>
+      </div>
+    </div>
+
+    <script>
+      console.log('🚀 EMERGENCY PACKAGES LOADED - 4 BUTTONS READY');
+
+      // Force button visibility
+      document.querySelectorAll('.emergency-button').forEach(btn => {
+        btn.style.display = 'block';
+        btn.style.visibility = 'visible';
+        btn.onclick = function () {
+          console.log('Emergency button clicked:', this.href);
+          // Fallback si WhatsApp ne fonctionne pas
+          setTimeout(() => {
+            if (!window.location.href.includes('wa.me')) {
+              emergencyContact();
+            }
+          }, 1000);
+        };
+      });
+
+      function emergencyContact() {
+        alert(
+          "🚨 EMERGENCY CONTACT\n\nPhone: +212 123 456 789\nWhatsApp: https://wa.me/212123456789\nEmail: info@windventure.fr\n\nWe'll get back to you immediately!"
+        );
+      }
+
+      // Force l'affichage des boutons après chargement
+      setTimeout(() => {
+        const buttons = document.querySelectorAll('.emergency-button');
+        console.log("🔍 BOUTONS D'URGENCE FORCÉS:", buttons.length);
+        buttons.forEach((btn, index) => {
+          btn.style.display = 'block';
+          btn.style.visibility = 'visible';
+          btn.style.opacity = '1';
+          btn.style.zIndex = '999999';
+          console.log(`🔍 BOUTON ${index} FORCÉ:`, btn.textContent);
+        });
+      }, 100);
+    </script>
+  </body>
+</html>

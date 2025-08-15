@@ -1,0 +1,216 @@
+import EquipmentSection from "@/components/EquipmentSection";
+
+
+export default function EquipmentPage() {
+  return (
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden pt-20">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-dakhla-blue-600 via-lagoon-turquoise-400 to-sahara-gold-400">
+          <div className="absolute inset-0 bg-black/20" />
+        </div>
+        
+        {/* Floating Equipment Icons */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[
+            { icon: "🪁", top: "20%", left: "10%", delay: 0 },
+            { icon: "🏄‍♂️", top: "30%", right: "15%", delay: 1 },
+            { icon: "🦺", bottom: "30%", left: "20%", delay: 2 },
+            { icon: "⚡", top: "50%", right: "30%", delay: 3 },
+            { icon: "🌊", bottom: "20%", right: "10%", delay: 4 },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="absolute text-4xl opacity-20 animate-float"
+              style={{
+                top: item.top,
+                bottom: item.bottom,
+                left: item.left,
+                right: item.right,
+                animationDelay: `${item.delay}s`,
+              }}
+            >
+              {item.icon}
+            </div>
+          ))}
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center text-white max-w-4xl mx-auto px-4">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+              Premium{" "}
+              <span className="bg-gradient-to-r from-sahara-gold-400 to-sahara-gold-600 bg-clip-text text-transparent">
+                Equipment
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8">
+              Latest generation gear for your safety and performance
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-white/80">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-sahara-gold-400 rounded-full" />
+                <span>Top Brands</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-lagoon-turquoise-400 rounded-full" />
+                <span>Regular Maintenance</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-dakhla-blue-400 rounded-full" />
+                <span>All Levels</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment Section */}
+      <EquipmentSection lang="en" />
+
+      {/* Brands Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Trusted{" "}
+              <span className="bg-gradient-to-r from-dakhla-blue-600 to-lagoon-turquoise-400 bg-clip-text text-transparent">
+                Brands
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We partner with the world's leading kitesurfing brands to provide you with the best equipment
+            </p>
+          </div>
+          
+          {/* Brand logos grid - Placeholder */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
+            {[
+              "Duotone", "Cabrinha", "North", "F-ONE", "Naish", "Core"
+            ].map((brand, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 rounded-xl p-6 text-center font-bold text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 cursor-pointer"
+              >
+                {brand}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sizing Guide Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Equipment{" "}
+              <span className="bg-gradient-to-r from-dakhla-blue-600 to-lagoon-turquoise-400 bg-clip-text text-transparent">
+                Sizing Guide
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our instructors will help you choose the perfect equipment based on your level and conditions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Kite Size",
+                icon: "🪁",
+                factors: [
+                  "Wind strength",
+                  "Your weight",
+                  "Skill level",
+                  "Board type"
+                ],
+                tip: "Our instructors will select the perfect kite size for current conditions and your progression level."
+              },
+              {
+                title: "Board Selection",
+                icon: "🏄‍♂️",
+                factors: [
+                  "Your height",
+                  "Skill level",
+                  "Riding style",
+                  "Water conditions"
+                ],
+                tip: "From wide beginner boards to performance freestyle boards, we have the right option for you."
+              },
+              {
+                title: "Harness Fit",
+                icon: "🦺",
+                factors: [
+                  "Waist size",
+                  "Comfort preference",
+                  "Hook position",
+                  "Session duration"
+                ],
+                tip: "Proper harness fit is crucial for comfort and control. We ensure perfect adjustment for every rider."
+              }
+            ].map((guide, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="text-center mb-6">
+                  <div className="text-5xl mb-4">{guide.icon}</div>
+                  <h3 className="text-2xl font-bold text-gray-900">{guide.title}</h3>
+                </div>
+                
+                <div className="space-y-3 mb-6">
+                  <h4 className="font-semibold text-gray-800">Key Factors:</h4>
+                  {guide.factors.map((factor, factorIndex) => (
+                    <div key={factorIndex} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-dakhla-blue-500 rounded-full flex-shrink-0" />
+                      <span className="text-gray-700">{factor}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="bg-blue-50 rounded-xl p-4">
+                  <p className="text-sm text-gray-700 italic">
+                    💡 {guide.tip}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-ocean">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Experience{" "}
+              <span className="bg-gradient-to-r from-sahara-gold-400 to-sahara-gold-600 bg-clip-text text-transparent">
+                Premium Gear?
+              </span>
+            </h2>
+            <p className="text-xl text-white/90 mb-8">
+              Book your session today and experience the difference that quality equipment makes in your kitesurfing journey.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/packages"
+                className="bg-white text-dakhla-blue-600 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50"
+              >
+                🏄‍♂️ Book Your Package
+              </a>
+              <a
+                href="/contact"
+                className="bg-white/20 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50"
+              >
+                📞 Ask Questions
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

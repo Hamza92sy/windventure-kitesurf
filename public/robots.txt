@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://windventure.fr/sitemap.xml
+
+# Block admin/private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow all other content for SEO
+Allow: /services/
+Allow: /booking/
+Allow: /contact/
+Allow: /about/
