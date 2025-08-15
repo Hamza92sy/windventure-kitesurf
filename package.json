@@ -11,6 +11,8 @@
     "type-check": "tsc --noEmit",
     "deploy": "vercel --prod",
     "deploy:preview": "vercel",
+    "deploy:auto": "node scripts/deployment-automation.js",
+    "deploy:test": "node scripts/deployment-test.js",
     "postinstall": "npm run build",
     "auto-commit": "./src/scripts/auto-commit.sh",
     "auto-deploy": "./src/scripts/auto-deploy.sh",
