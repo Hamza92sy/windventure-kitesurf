@@ -17,7 +17,36 @@
 const { execSync, spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
+
+// Import fetch - gestion des versions node-fetch
+let fetch;
+try {
+    // Essai avec require (node-fetch v2)
+    fetch = require('node-fetch');
+} catch (error) {
+    try {
+        // Fallback avec import dynamique (node-fetch v3)
+        const nodeFetch = require('node-fetch');
+        fetch = nodeFetch.default || nodeFetch;
+    } catch (error2) {
+        console.warn('node-fetch not available, health checks will be limited');
+        // Fallback basique avec https
+        const https = require('https');
+        fetch = (url) => {
+            return new Promise((resolve, reject) => {
+                https.get(url, (res) => {
+                    let data = '';
+                    res.on('data', chunk => data += chunk);
+                    res.on('end', () => resolve({ 
+                        ok: res.statusCode >= 200 && res.statusCode < 300,
+                        status: res.statusCode,
+                        text: () => Promise.resolve(data)
+                    }));
+                }).on('error', reject);
+            });
+        };
+    }
+}
 
 class WindventureDeployment {
     constructor() {
