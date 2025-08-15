@@ -163,14 +163,19 @@ class WindventureDeployment {
         try {
             // Vérification next.config.js
             if (fs.existsSync('next.config.js')) {
-                require('./next.config.js');
+                require(path.resolve('./next.config.js'));
                 this.log('✓ next.config.js valid', 'SUCCESS');
             }
             
-            // Vérification tailwind.config.js
+            // Vérification tailwind.config.js  
             if (fs.existsSync('tailwind.config.js')) {
-                require('./tailwind.config.js');
+                require(path.resolve('./tailwind.config.js'));
                 this.log('✓ tailwind.config.js valid', 'SUCCESS');
+            }
+            
+            // Vérification tailwind.config.ts
+            if (fs.existsSync('tailwind.config.ts')) {
+                this.log('✓ tailwind.config.ts found', 'SUCCESS');
             }
             
             return true;
