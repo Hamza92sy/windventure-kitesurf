@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '../../src/lib/supabase';
+import { supabase } from '../src/lib/supabase';
 
 const MAX_PARTICIPANTS_PER_DAY = 20;
 
