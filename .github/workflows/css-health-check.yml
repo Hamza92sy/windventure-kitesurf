@@ -1,0 +1,101 @@
+name: CSS Health Check - Production Monitoring
+
+on:
+  push:
+    branches: [ main, main-clean ]
+  schedule:
+    # Test CSS health every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  css-health-monitoring:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright
+      run: npx playwright install --with-deps chromium
+    
+    - name: Run CSS Health Monitoring
+      run: npm run test:css:monitor
+      env:
+        CI: true
+    
+    - name: Run Quick CI Health Check
+      run: npm run test:css:ci
+      env:
+        CI: true
+    
+    - name: Create CSS Status Badge
+      if: success()
+      run: |
+        echo "CSS-STATUS=passing" >> $GITHUB_ENV
+        echo "CSS-COLOR=green" >> $GITHUB_ENV
+    
+    - name: Create CSS Status Badge (Failed)  
+      if: failure()
+      run: |
+        echo "CSS-STATUS=failing" >> $GITHUB_ENV
+        echo "CSS-COLOR=red" >> $GITHUB_ENV
+    
+    - name: Upload test artifacts on failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: css-health-failure-${{ github.run_number }}
+        path: |
+          test-results/
+          playwright-report/
+        retention-days: 7
+    
+    - name: Slack notification on CSS failure
+      if: failure()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: failure
+        text: '🚨 CSS Health Check FAILED on windventure.fr - Styles may be broken!'
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  visual-regression-check:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule' # Don't run visual tests on scheduled runs
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright
+      run: npx playwright install --with-deps
+    
+    - name: Run Visual Regression Tests
+      run: npm run test:visual
+      env:
+        CI: true
+    
+    - name: Upload visual regression diffs
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: visual-regression-diffs-${{ github.run_number }}
+        path: test-results/
+        retention-days: 30

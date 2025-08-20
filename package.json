@@ -24,7 +24,18 @@
     "generate-sitemap": "./src/scripts/generate-sitemap.sh",
     "watch-all": "./src/scripts/watch-all.sh",
     "watch-claude": "./watch-claude.sh",
-    "watch-cursor": "./scripts/file-watcher.sh"
+    "watch-cursor": "./scripts/file-watcher.sh",
+    "test:css": "playwright test css-monitoring",
+    "test:css:ui": "playwright test css-monitoring --ui",
+    "test:css:headed": "playwright test css-monitoring --headed",
+    "test:css:validation": "playwright test tests/css-validation.spec.ts",
+    "test:css:monitor": "playwright test tests/css-monitoring.spec.ts",
+    "test:css:ci": "playwright test tests/css-monitoring-ci.spec.ts",
+    "css:monitor": "npm run test:css && npm run lighthouse:css",
+    "css:monitor:full": "./scripts/css-monitor.sh",
+    "lighthouse:css": "lighthouse https://windventure.fr --only-categories=performance --chrome-flags='--headless'",
+    "test:visual": "playwright test --grep 'Visual Regression'",
+    "test:all": "playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",
@@ -61,6 +72,7 @@
     "@types/react-dom": "^18.0.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
+    "lighthouse": "^11.0.0",
     "playwright": "^1.54.2",
     "typescript": "^5.0.0",
     "vitest": "^3.2.4"
