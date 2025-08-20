@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* FORCE TAILWIND CSS TO WORK - HIGHEST PRIORITY */
+* {
+  font-family: inherit;
+}
+
+body {
+  color: inherit !important;
+  background: inherit !important;
+  margin: inherit !important;
+}
+
 /* Google Fonts loaded via next/font/google instead of @import for better performance */
 
 /* Enhanced globals.css with Dakhla theme and mobile optimizations */
