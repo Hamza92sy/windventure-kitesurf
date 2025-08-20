@@ -1,5 +1,6 @@
 import React from 'react';
 import './globals.css';
+import CSSFixer from '@/components/CSSFixer';
 
 export const metadata = {
   title: 'WindVenture - Ultimate Kitesurf Experience in Dakhla, Morocco',
@@ -39,7 +40,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <CSSFixer />
+        {children}
+      </body>
     </html>
   );
 }
