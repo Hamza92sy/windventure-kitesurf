@@ -1,6 +1,6 @@
 import React from 'react';
 import './globals.css';
-import CSSFixer from '@/components/CSSFixer';
+import CSSFixer from '../components/CSSFixer';
 
 export const metadata = {
   title: 'WindVenture - Ultimate Kitesurf Experience in Dakhla, Morocco',
