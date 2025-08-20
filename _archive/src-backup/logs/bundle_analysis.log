@@ -1,0 +1,15 @@
+[2025-07-31 22:56:35] Bundle Analysis Results:
+  Total Size: 1MB
+  JavaScript: 1000KB
+  CSS: 47KB
+  HTML: 12KB
+  Images: 0B
+  - fd9d1056-411c0e320fe15393.js: 168KB
+  - framework-f66176bb897dc684.js: 136KB
+  - main-f61fb7f6119c5b27.js: 128KB
+  - 117-91aa3788fdf9adcc.js: 120KB
+  - polyfills-42372ed130431b0a.js: 109KB
+[2025-07-31 22:56:35] Bundle Composition:
+  Page chunks:        0
+  Shared chunks:        3
+  Vendor chunks:        0

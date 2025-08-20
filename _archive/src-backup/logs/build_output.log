@@ -1,0 +1,202 @@
+
+> windventure@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.31
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/17) ...
+   Generating static pages (4/17) 
+   Generating static pages (8/17) 
+   Generating static pages (12/17) 
+Rendering PackageCard with pkg: {
+  id: 'beginner-private',
+  title: 'Beginner Package (Private)',
+  description: "Master kitesurfing with personalized one-on-one instruction in Dakhla's perfect lagoon conditions.",
+  price: 720,
+  image: '/images/dakhla/dakhla-lagoon-1.jpg',
+  category: 'beginner',
+  duration: '6 hours',
+  maxParticipants: 1,
+  difficulty: 'beginner',
+  features: [
+    'Private instructor',
+    'All equipment included',
+    '6 hours training',
+    'Safety briefing',
+    'Progress assessment'
+  ],
+  includes: [
+    'Professional instructor',
+    'Kite and board equipment',
+    'Safety gear (helmet, life jacket)',
+    'Insurance coverage',
+    'Certificate of completion'
+  ],
+  requirements: [
+    'No previous experience required',
+    'Basic swimming ability',
+    'Good physical condition',
+    'Minimum age: 12 years'
+  ],
+  highlights: [
+    'Personalized attention',
+    'Learn at your own pace',
+    'Perfect for complete beginners',
+    'Safe lagoon conditions'
+  ]
+}
+Rendering PackageCard with pkg: {
+  id: 'beginner-semi-private',
+  title: 'Beginner Package (Semi-Private)',
+  description: "Learn kitesurfing with friends in Dakhla's crystal-clear lagoon. Perfect balance of personal attention.",
+  price: 1100,
+  image: '/images/dakhla/dakhla-lagoon-2.jpg',
+  category: 'beginner',
+  duration: '8 hours',
+  maxParticipants: 3,
+  difficulty: 'beginner',
+  features: [
+    'Small group (2-3 people)',
+    'All equipment included',
+    '8 hours training',
+    'Shared learning experience',
+    'Group dynamics'
+  ],
+  includes: [
+    'Professional instructor',
+    'Kite and board equipment',
+    'Safety gear (helmet, life jacket)',
+    'Insurance coverage',
+    'Certificate of completion',
+    'Group activities'
+  ],
+  requirements: [
+    'No previous experience required',
+    'Basic swimming ability',
+    'Good physical condition',
+    'Minimum age: 12 years'
+  ],
+  highlights: [
+    'Social learning experience',
+    'Cost-effective option',
+    'Perfect for friends and families',
+    'Motivational group atmosphere'
+  ]
+}
+Rendering PackageCard with pkg: {
+  id: 'exploration',
+  title: 'Exploration Package',
+  description: "Explore Dakhla's legendary kitesurf spots from the famous White Dune to Dragon Island.",
+  price: 1250,
+  image: '/images/dakhla/white-dune-real.jpg',
+  category: 'exploration',
+  duration: '10 hours',
+  maxParticipants: 4,
+  difficulty: 'intermediate',
+  features: [
+    'Multiple locations',
+    'Transport included',
+    '10 hours coaching',
+    'Spot variety',
+    'Local insights'
+  ],
+  includes: [
+    'Professional guide',
+    'Transport to different spots',
+    'Kite and board equipment',
+    'Safety gear',
+    'Insurance coverage',
+    'Local knowledge sharing'
+  ],
+  requirements: [
+    'Basic kitesurfing experience',
+    'Good physical condition',
+    'Minimum age: 16 years',
+    'Ability to ride upwind'
+  ],
+  highlights: [
+    'Discover multiple spots',
+    'Experience different conditions',
+    'Learn from local experts',
+    'Adventure and exploration'
+  ]
+}
+Rendering PackageCard with pkg: {
+  id: 'combined',
+  title: 'Combined Package',
+  description: 'The ultimate Dakhla kitesurf experience combining technique mastery with exploration.',
+  price: 1350,
+  image: '/images/dakhla/dragon-island.jpg',
+  category: 'combined',
+  duration: '12 hours',
+  maxParticipants: 3,
+  difficulty: 'intermediate',
+  isPopular: true,
+  features: [
+    'Best of both worlds',
+    '12 hours training',
+    '3 different spots',
+    'Technique & adventure',
+    'Complete experience'
+  ],
+  includes: [
+    'Professional instructor',
+    'Transport to multiple locations',
+    'Kite and board equipment',
+    'Safety gear',
+    'Insurance coverage',
+    'Certificate of completion',
+    'Photo/video documentation'
+  ],
+  requirements: [
+    'Basic kitesurfing experience',
+    'Good physical condition',
+    'Minimum age: 16 years',
+    'Ability to ride upwind'
+  ],
+  highlights: [
+    'Comprehensive experience',
+    'Technique improvement',
+    'Spot exploration',
+    'Professional documentation',
+    'Most popular choice'
+  ]
+}
+ ✓ Generating static pages (17/17)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    4.45 kB         155 kB
+├ ○ /_not-found                          873 B          88.1 kB
+├ ○ /about                               2.5 kB          141 kB
+├ ƒ /api/check-availability              0 B                0 B
+├ ƒ /api/contact                         0 B                0 B
+├ ƒ /api/create-booking                  0 B                0 B
+├ ƒ /api/create-checkout-session         0 B                0 B
+├ ○ /api/test                            0 B                0 B
+├ ƒ /api/verify-session                  0 B                0 B
+├ ƒ /api/webhook                         0 B                0 B
+├ ○ /book                                8.74 kB         138 kB
+├ ○ /booking-success                     1.28 kB        97.2 kB
+├ ○ /contact                             2.31 kB        98.2 kB
+├ ○ /faq                                 4.8 kB          136 kB
+├ ○ /packages                            4.39 kB         133 kB
+├ ƒ /packages/[slug]                     7.97 kB         156 kB
+└ ○ /terms                               3.96 kB         135 kB
++ First Load JS shared by all            87.2 kB
+  ├ chunks/117-91aa3788fdf9adcc.js       31.6 kB
+  ├ chunks/fd9d1056-411c0e320fe15393.js  53.6 kB
+  └ other shared chunks (total)          1.95 kB
+
+
+ƒ Middleware                             36.5 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

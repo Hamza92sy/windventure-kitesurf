@@ -2,11 +2,10 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -118,6 +117,33 @@ const config: Config = {
     // require("@tailwindcss/typography"),
     // require("@tailwindcss/forms"),
     // require("@tailwindcss/aspect-ratio"),
+  ],
+  // Safeguard against aggressive purging in production
+  safelist: [
+    'text-blue-600',
+    'text-green-600', 
+    'text-red-600',
+    'text-cyan-600',
+    'text-purple-600',
+    'bg-blue-50',
+    'bg-green-50',
+    'bg-red-50',
+    'bg-cyan-50',
+    'bg-white',
+    'bg-gray-900',
+    'bg-slate-900',
+    'from-blue-400',
+    'from-cyan-400',
+    'from-green-400',
+    'from-purple-400',
+    'to-blue-500',
+    'to-cyan-500', 
+    'to-green-500',
+    'to-purple-500',
+    'hover:shadow-xl',
+    'hover:scale-105',
+    'transition-all',
+    'duration-300',
   ],
 };
 
