@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' *.windventure.fr windventure.fr; script-src 'self' *.windventure.fr windventure.fr 'unsafe-inline' 'unsafe-eval' *.vercel.app vercel.live; style-src 'self' 'unsafe-inline' *.windventure.fr windventure.fr *.vercel.app fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com data:; connect-src 'self' *.windventure.fr windventure.fr *.sentry.io o35838.ingest.sentry.io api.vercel.com vitals.vercel-insights.com; img-src 'self' data: blob: *.windventure.fr windventure.fr *.vercel.app; frame-src 'self' *.vercel.app; object-src 'none'; base-uri 'self'; form-action 'self'"
+          "value": "default-src 'self' windventure.fr *.windventure.fr *.vercel.app; script-src 'self' windventure.fr *.windventure.fr *.vercel.app 'unsafe-inline' 'unsafe-eval'; style-src 'self' windventure.fr *.windventure.fr *.vercel.app 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com data:; connect-src 'self' *.sentry.io api.vercel.com vitals.vercel-insights.com; img-src 'self' data: blob: windventure.fr *.windventure.fr *.vercel.app; frame-src 'self' *.vercel.app; object-src 'none'; base-uri 'self'; form-action 'self'"
         },
         {
           "key": "X-Frame-Options",
@@ -18,6 +18,10 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-CSP-Force",
+          "value": "windventure-emergency-fix"
         }
       ]
     }

@@ -57,7 +57,8 @@
     "ci:lint": "npm run lint -- --max-warnings 0",
     "test:csp:prod": "node scripts/csp-live-diagnostic.js",
     "test:csp:headers": "curl -s -D - https://windventure.fr -o /dev/null | grep -i 'content-security-policy'",
-    "debug:csp": "npm run test:csp:prod"
+    "debug:csp": "npm run test:csp:prod",
+    "force-csp": "node scripts/force-csp-headers.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",

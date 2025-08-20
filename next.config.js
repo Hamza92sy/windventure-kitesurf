@@ -3,100 +3,45 @@ const { withSentryConfig } = require("@sentry/nextjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable source maps in production for better error tracking
   productionBrowserSourceMaps: true,
-  
-  // Skip ESLint during build for faster deployment  
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  
-  // Skip TypeScript during build for faster deployment
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  
-  // Performance optimizations
-  experimental: {
-    optimizePackageImports: ['@sentry/nextjs'],
-  },
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  experimental: { optimizePackageImports: ['@sentry/nextjs'] },
 
-  // Optional redirects (commented out - packages page exists)
-  // Uncomment the redirects below if you want to redirect /packages to another page
-  /*
-  async redirects() {
-    return [
-      {
-        source: '/packages',
-        destination: '/pricing', // or '/book', '/offers', etc.
-        permanent: true,         // 301 redirect
-      },
-    ];
-  },
-  */
-  
-  // Enhanced security headers for production
+  // ⚡ FORCE CSP HEADERS - MÉTHODE D'URGENCE
   async headers() {
     return [
       {
         source: '/(.*)',
         headers: [
           {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains; preload',
+            key: 'Content-Security-Policy',
+            value: "default-src 'self' windventure.fr *.windventure.fr *.vercel.app; script-src 'self' windventure.fr *.windventure.fr *.vercel.app 'unsafe-inline' 'unsafe-eval'; style-src 'self' windventure.fr *.windventure.fr *.vercel.app 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com data:; connect-src 'self' *.sentry.io api.vercel.com vitals.vercel-insights.com; img-src 'self' data: blob: windventure.fr *.windventure.fr *.vercel.app; frame-src 'self' *.vercel.app; object-src 'none'; base-uri 'self'; form-action 'self'"
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY',
+            value: 'DENY'
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: 'nosniff'
           },
           {
             key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'accelerometer=(), camera=(), geolocation=(), microphone=(), payment=()',
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: https://*.windventure.fr https://windventure.fr", // Fix pour Next.js assets
-              "style-src 'self' 'unsafe-inline' https: https://*.windventure.fr https://windventure.fr https://fonts.googleapis.com",
-              "img-src * data: blob:",
-              "font-src 'self' data: https: https://fonts.gstatic.com",
-              "connect-src * wss: ws: https://*.sentry.io https://*.vercel.com",
-              "frame-ancestors 'none'",
-            ].join('; '),
-          },
-        ],
-      },
+            value: 'strict-origin-when-cross-origin'
+          }
+        ]
+      }
     ]
-  },
+  }
 };
 
-// Sentry configuration
 const sentryWebpackPluginOptions = {
-  // Suppresses source map uploading logs during build
   silent: true,
-  
-  // Upload source maps to Sentry
   widenClientFileUpload: true,
-  
-  // Transpiles SDK to be compatible with IE11
   transpileClientSDK: false,
-  
-  // Hides source maps from generated client bundles
   hideSourceMaps: true,
-  
-  // Automatically tree-shake Sentry logger statements
   disableLogger: true,
-  
-  // Sentry organization and project
   org: process.env.SENTRY_ORG,
   project: process.env.SENTRY_PROJECT,
 };

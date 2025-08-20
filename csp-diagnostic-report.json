@@ -8,44 +8,10 @@
   },
   "violations": [
     {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/main-app-2d68c23e80a22a15.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to apply style from 'https://www.windventure.fr/_next/static/css/90d687714dcf5154.css?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/52774a7f-b79dd891a8ac80b9.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/app/layout-59d4ff7082831567.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/fd9d1056-f942727f5ca6adb5.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/webpack-03f7c6bc932ce1e3.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/app/page-adb53b0c57617212.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
-    },
-    {
-      "type": "csp",
-      "message": "Refused to execute script from 'https://www.windventure.fr/_next/static/chunks/824-8f6984b2369f4706.js?dpl=dpl_6mdaP4k3xFpRwzZ3GphEWx2cdJTR' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
-      "level": "error"
+      "type": "network",
+      "url": "https://www.windventure.fr/pattern.svg",
+      "status": 404,
+      "resourceType": "image"
     },
     {
       "type": "network",
@@ -73,12 +39,6 @@
     },
     {
       "priority": "HIGH",
-      "action": "Corriger violations CSP",
-      "description": "8 violations détectées",
-      "solution": "Ajuster les directives CSP pour autoriser les ressources légitimes"
-    },
-    {
-      "priority": "HIGH",
       "action": "Réparer Tailwind CSS",
       "description": "Tailwind CSS ne semble pas chargé correctement",
       "solution": "Vérifier la CSP style-src et script-src"
@@ -86,9 +46,9 @@
     {
       "priority": "MEDIUM",
       "action": "Corriger erreurs réseau",
-      "description": "1 ressources en erreur",
+      "description": "2 ressources en erreur",
       "solution": "Vérifier les URLs et la configuration du serveur"
     }
   ],
-  "status": "critical"
+  "status": "warning"
 }
