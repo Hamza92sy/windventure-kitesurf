@@ -10,7 +10,7 @@ interface GalleryImage {
   src: string;
   alt: string;
   caption?: string;
-  category: 'action' | 'landscape' | 'equipment' | 'people';
+  category: 'action' | 'landscape' | 'equipment' | 'people' | 'lifestyle';
 }
 
 interface GalleryPlusProps {

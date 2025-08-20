@@ -154,7 +154,7 @@ export default function HomePageWrapper() {
           </div>
         </section>
 
-        <GalleryPlus images={galleryImages} />
+        <GalleryPlus title="Découvrez Dakhla" images={galleryImages} />
         <TestimonialsMatrix />
       </main>
 

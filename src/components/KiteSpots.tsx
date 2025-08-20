@@ -5,8 +5,8 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  WindIcon,
-  WaveIcon,
+  CloudIcon as WindIcon,
+  BeakerIcon as WaveIcon,
   SunIcon,
   MapPinIcon,
 } from '@heroicons/react/24/outline';
@@ -176,7 +176,7 @@ const KiteSpots = () => {
                 <motion.div
                   key={activeSpot}
                   className='kite-spots-image'
-                  style={{ backgroundImage: `url('${currentSpot.image}')` }}
+                  style={{ backgroundImage: `url('${currentSpot?.image}')` }}
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
@@ -191,13 +191,13 @@ const KiteSpots = () => {
                 className='kite-spots-nav kite-spots-nav--prev'
                 onClick={prevSpot}
               >
-                <ChevronLeftIcon className='w-6 h-6' />
+                {React.createElement(ChevronLeftIcon as any, { className: 'w-6 h-6' })}
               </button>
               <button
                 className='kite-spots-nav kite-spots-nav--next'
                 onClick={nextSpot}
               >
-                <ChevronRightIcon className='w-6 h-6' />
+                {React.createElement(ChevronRightIcon as any, { className: 'w-6 h-6' })}
               </button>
 
               {/* Spot Counter */}
@@ -219,49 +219,49 @@ const KiteSpots = () => {
                   className='kite-spots-info'
                 >
                   <div className='kite-spots-header'>
-                    <h3 className='kite-spots-name'>{currentSpot.name}</h3>
+                    <h3 className='kite-spots-name'>{currentSpot?.name}</h3>
                     <p className='kite-spots-subtitle'>
-                      {currentSpot.subtitle}
+                      {currentSpot?.subtitle}
                     </p>
                   </div>
 
                   <p className='kite-spots-description'>
-                    {currentSpot.description}
+                    {currentSpot?.description}
                   </p>
 
                   {/* Conditions Grid */}
                   <div className='kite-spots-conditions'>
                     <div className='kite-spots-condition'>
-                      <WindIcon className='w-5 h-5' />
+                      {React.createElement(WindIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Wind</span>
                         <span className='value'>
-                          {currentSpot.conditions.wind}
+                          {currentSpot?.conditions?.wind}
                         </span>
                       </div>
                     </div>
                     <div className='kite-spots-condition'>
-                      <WaveIcon className='w-5 h-5' />
+                      {React.createElement(WaveIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Water</span>
                         <span className='value'>
-                          {currentSpot.conditions.water}
+                          {currentSpot?.conditions?.water}
                         </span>
                       </div>
                     </div>
                     <div className='kite-spots-condition'>
-                      <SunIcon className='w-5 h-5' />
+                      {React.createElement(SunIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Best Time</span>
-                        <span className='value'>{currentSpot.bestTime}</span>
+                        <span className='value'>{currentSpot?.bestTime}</span>
                       </div>
                     </div>
                     <div className='kite-spots-condition'>
-                      <MapPinIcon className='w-5 h-5' />
+                      {React.createElement(MapPinIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Level</span>
                         <span className='value'>
-                          {currentSpot.conditions.difficulty}
+                          {currentSpot?.conditions?.difficulty}
                         </span>
                       </div>
                     </div>
@@ -269,7 +269,7 @@ const KiteSpots = () => {
 
                   {/* Features */}
                   <div className='kite-spots-features'>
-                    {currentSpot.features.map((feature, index) => (
+                    {currentSpot?.features?.map((feature, index) => (
                       <span key={index} className='kite-spots-feature'>
                         {feature}
                       </span>

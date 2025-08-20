@@ -154,7 +154,7 @@ const Experiences = () => {
                 onClick={() => setActiveExperience(index)}
               >
                 <div className='experiences-selector-icon'>
-                  <exp.icon className='w-6 h-6' />
+{React.createElement(exp.icon as any, { className: 'w-6 h-6' })}
                 </div>
                 <div className='experiences-selector-text'>
                   <h3>{exp.title}</h3>
@@ -185,12 +185,12 @@ const Experiences = () => {
                 <div className='experiences-image-container'>
                   <div
                     className='experiences-image'
-                    style={{ backgroundImage: `url('${currentExp.image}')` }}
+                    style={{ backgroundImage: `url('${currentExp?.image}')` }}
                   >
                     <div className='experiences-image-overlay' />
                     <div className='experiences-badge'>
-                      <currentExp.icon className='w-5 h-5' />
-                      <span>{currentExp.title}</span>
+{currentExp && React.createElement(currentExp.icon as any, { className: 'w-5 h-5' })}
+                      <span>{currentExp?.title}</span>
                     </div>
                   </div>
                 </div>
@@ -198,40 +198,40 @@ const Experiences = () => {
                 {/* Content */}
                 <div className='experiences-details'>
                   <div className='experiences-header'>
-                    <h3 className='experiences-title'>{currentExp.title}</h3>
+                    <h3 className='experiences-title'>{currentExp?.title}</h3>
                     <p className='experiences-subtitle'>
-                      {currentExp.subtitle}
+                      {currentExp?.subtitle}
                     </p>
                     <div className='experiences-price-main'>
-                      {currentExp.price}
+                      {currentExp?.price}
                     </div>
                   </div>
 
                   <p className='experiences-description'>
-                    {currentExp.description}
+                    {currentExp?.description}
                   </p>
 
                   {/* Info Grid */}
                   <div className='experiences-info-grid'>
                     <div className='experiences-info-item'>
-                      <ClockIcon className='w-5 h-5' />
+                      {React.createElement(ClockIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Duration</span>
-                        <span className='value'>{currentExp.duration}</span>
+                        <span className='value'>{currentExp?.duration}</span>
                       </div>
                     </div>
                     <div className='experiences-info-item'>
-                      <UserGroupIcon className='w-5 h-5' />
+                      {React.createElement(UserGroupIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Group Size</span>
-                        <span className='value'>{currentExp.groupSize}</span>
+                        <span className='value'>{currentExp?.groupSize}</span>
                       </div>
                     </div>
                     <div className='experiences-info-item'>
-                      <StarIcon className='w-5 h-5' />
+                      {React.createElement(StarIcon as any, { className: 'w-5 h-5' })}
                       <div>
                         <span className='label'>Difficulty</span>
-                        <span className='value'>{currentExp.difficulty}</span>
+                        <span className='value'>{currentExp?.difficulty}</span>
                       </div>
                     </div>
                   </div>
@@ -240,7 +240,7 @@ const Experiences = () => {
                   <div className='experiences-highlights'>
                     <h4>Experience Highlights</h4>
                     <ul>
-                      {currentExp.highlights.map((highlight, index) => (
+                      {currentExp?.highlights?.map((highlight, index) => (
                         <li key={index}>{highlight}</li>
                       ))}
                     </ul>
@@ -250,13 +250,13 @@ const Experiences = () => {
                   <div className='experiences-gallery'>
                     <h4>Gallery</h4>
                     <div className='experiences-gallery-grid'>
-                      {currentExp.gallery.map((image, index) => (
+                      {currentExp?.gallery?.map((image, index) => (
                         <div
                           key={index}
                           className='experiences-gallery-item'
                           style={{ backgroundImage: `url('${image}')` }}
                         >
-                          <CameraIcon className='experiences-gallery-icon w-5 h-5' />
+                          {React.createElement(CameraIcon as any, { className: 'experiences-gallery-icon w-5 h-5' })}
                         </div>
                       ))}
                     </div>
@@ -270,10 +270,10 @@ const Experiences = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       Book This Experience
-                      <MapPinIcon className='w-5 h-5' />
+                      {React.createElement(MapPinIcon as any, { className: 'w-5 h-5' })}
                     </motion.button>
                     <span className='experiences-included'>
-                      Includes: {currentExp.included.join(', ')}
+                      Includes: {currentExp?.included?.join(', ')}
                     </span>
                   </div>
                 </div>

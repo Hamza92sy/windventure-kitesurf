@@ -37,7 +37,7 @@ export default function UXNotes({ page = 'home' }: { page?: string }) {
         page,
         rating,
         comment,
-        emoji: emojis[rating - 1],
+        emoji: emojis[rating - 1] || '😐',
       };
 
       const { error } = await supabase.from('ux_feedback').insert([feedback]);

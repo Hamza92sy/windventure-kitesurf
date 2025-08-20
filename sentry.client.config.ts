@@ -23,7 +23,7 @@ Sentry.init({
       const error = hint.originalException
       
       // Ignorer les erreurs de réseau temporaires
-      if (error?.message?.includes('NetworkError')) {
+      if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string' && error.message.includes('NetworkError')) {
         return null
       }
       
@@ -58,11 +58,11 @@ Sentry.init({
   
   // Intégrations
   integrations: [
-    new Sentry.BrowserTracing({
-      tracingOrigins: ['localhost', 'windventure.fr', /^\//],
-      routingInstrumentation: Sentry.nextRouterInstrumentation,
+    Sentry.browserTracingIntegration({
+      // tracingOrigins moved to tracePropagationTargets
+      // router instrumentation handled automatically
     }),
-    new Sentry.Replay({
+    Sentry.replayIntegration({
       maskAllText: false,
       blockAllMedia: false,
       maskAllInputs: true,

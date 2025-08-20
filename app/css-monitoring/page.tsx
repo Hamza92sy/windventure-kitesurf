@@ -51,7 +51,7 @@ const CSSMonitoringDashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const StatusIcon = ({ status }) => {
+  const StatusIcon = ({ status }: { status: string }) => {
     switch (status) {
       case 'success':
         return <CheckCircle className="w-5 h-5 text-green-500" />;
@@ -64,7 +64,7 @@ const CSSMonitoringDashboard = () => {
     }
   };
 
-  const StatusCard = ({ title, status, description, metric }) => (
+  const StatusCard = ({ title, status, description, metric }: { title: string; status: string; description: string; metric: string }) => (
     <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
       <div className="flex items-center justify-between mb-2">
         <h3 className="font-medium text-gray-900">{title}</h3>

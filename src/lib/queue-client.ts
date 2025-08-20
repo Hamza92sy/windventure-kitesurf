@@ -116,7 +116,8 @@ export class QueueClient {
       payload: data[0].payload,
       attempts: data[0].attempts,
       workflow_version: data[0].workflow_version,
-      status: 'processing'
+      status: 'processing',
+      idempotency_key: data[0].idempotency_key || `${data[0].job_type}-${Date.now()}`
     };
   }
 

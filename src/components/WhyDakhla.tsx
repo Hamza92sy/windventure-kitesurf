@@ -86,7 +86,7 @@ const WhyDakhla = () => {
             >
               <div className='why-dakhla-card__content'>
                 <div className='why-dakhla-card__icon'>
-                  <feature.icon className='w-8 h-8' />
+{React.createElement(feature.icon as any, { className: 'w-8 h-8' })}
                 </div>
 
                 <div className='why-dakhla-card__text'>

@@ -32,6 +32,7 @@ export default function SuccessMessage({
 
       return () => clearTimeout(timer);
     }
+    return () => {}; // Empty cleanup for else case
   }, [autoHide, autoHideDelay, onClose]);
 
   const handleClose = () => {

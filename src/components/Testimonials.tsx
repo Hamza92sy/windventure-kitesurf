@@ -139,7 +139,7 @@ const Testimonials = () => {
           <motion.div
             key={activeTestimonial}
             className='testimonials-bg-image'
-            style={{ backgroundImage: `url('${currentTestimonial.image}')` }}
+            style={{ backgroundImage: `url('${currentTestimonial?.image}')` }}
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -192,52 +192,52 @@ const Testimonials = () => {
                     >
                       <path d='M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z' />
                     </svg>
-                    <p>{currentTestimonial.quote}</p>
+                    <p>{currentTestimonial?.quote}</p>
                   </div>
 
                   <div className='testimonials-author'>
                     <div className='testimonials-avatar'>
                       <img
-                        src={currentTestimonial.avatar}
-                        alt={currentTestimonial.name}
+                        src={currentTestimonial?.avatar}
+                        alt={currentTestimonial?.name || ''}
                       />
                     </div>
                     <div className='testimonials-author-info'>
-                      <h4>{currentTestimonial.name}</h4>
+                      <h4>{currentTestimonial?.name}</h4>
                       <div className='testimonials-author-details'>
                         <span className='testimonials-location'>
-                          <MapPinIcon className='w-4 h-4' />
-                          {currentTestimonial.location}
+                          {React.createElement(MapPinIcon as any, { className: 'w-4 h-4' })}
+                          {currentTestimonial?.location}
                         </span>
                         <span className='testimonials-date'>
-                          <CalendarIcon className='w-4 h-4' />
-                          {currentTestimonial.date}
+                          {React.createElement(CalendarIcon as any, { className: 'w-4 h-4' })}
+                          {currentTestimonial?.date}
                         </span>
                       </div>
                       <div className='testimonials-trip'>
-                        {currentTestimonial.trip}
+                        {currentTestimonial?.trip}
                       </div>
                       <div className='testimonials-social'>
-                        {currentTestimonial.social}
+                        {currentTestimonial?.social}
                       </div>
                     </div>
                     <div className='testimonials-rating'>
                       {[...Array(5)].map((_, i) => (
-                        <StarSolidIcon
-                          key={i}
-                          className={`w-5 h-5 ${
-                            i < currentTestimonial.rating
+                        React.createElement(StarSolidIcon as any, {
+                          key: i,
+                          className: `w-5 h-5 ${
+                            i < (currentTestimonial?.rating || 0)
                               ? 'text-dakhla-sunrise'
                               : 'text-gray-300'
-                          }`}
-                        />
+                          }`
+                        })
                       ))}
                     </div>
                   </div>
 
                   <div className='testimonials-highlight'>
                     <span className='testimonials-highlight-badge'>
-                      {currentTestimonial.highlight}
+                      {currentTestimonial?.highlight}
                     </span>
                   </div>
                 </div>
@@ -250,7 +250,7 @@ const Testimonials = () => {
                 className='testimonials-nav-btn'
                 onClick={prevTestimonial}
               >
-                <ChevronLeftIcon className='w-5 h-5' />
+                {React.createElement(ChevronLeftIcon as any, { className: 'w-5 h-5' })}
               </button>
 
               <div className='testimonials-controls'>
@@ -259,9 +259,9 @@ const Testimonials = () => {
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                 >
                   {isAutoPlaying ? (
-                    <PauseIcon className='w-4 h-4' />
+                    React.createElement(PauseIcon as any, { className: 'w-4 h-4' })
                   ) : (
-                    <PlayIcon className='w-4 h-4' />
+                    React.createElement(PlayIcon as any, { className: 'w-4 h-4' })
                   )}
                 </button>
                 <span className='testimonials-counter'>
@@ -273,7 +273,7 @@ const Testimonials = () => {
                 className='testimonials-nav-btn'
                 onClick={nextTestimonial}
               >
-                <ChevronRightIcon className='w-5 h-5' />
+                {React.createElement(ChevronRightIcon as any, { className: 'w-5 h-5' })}
               </button>
             </div>
           </motion.div>
@@ -307,7 +307,7 @@ const Testimonials = () => {
                 </div>
                 <div className='testimonials-thumbnail-rating'>
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <StarSolidIcon key={i} className='w-3 h-3' />
+                    React.createElement(StarSolidIcon as any, { key: i, className: 'w-3 h-3' })
                   ))}
                 </div>
               </button>

@@ -57,7 +57,7 @@ const WindventureHero = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.5, duration: 0.5 }}
             >
-              <PlayIcon className='w-8 h-8' />
+  {React.createElement(PlayIcon as any, { className: 'w-8 h-8' })}
               <span>Experience Dakhla</span>
             </motion.button>
           </div>
@@ -219,7 +219,7 @@ const WindventureHero = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <ChevronDownIcon className='w-6 h-6' />
+{React.createElement(ChevronDownIcon as any, { className: 'w-6 h-6' })}
           </motion.div>
         </motion.button>
       </div>
