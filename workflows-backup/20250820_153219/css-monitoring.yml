@@ -1,0 +1,61 @@
+name: 🎨 CSS Monitoring - Windventure
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Test toutes les 6h pour détecter les régressions externes
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  css-health-check:
+    name: 🧪 CSS Health Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright
+      run: npx playwright install --with-deps
+    
+    - name: Run CSS Monitoring Tests
+      run: npx playwright test css-monitoring
+      env:
+        BASE_URL: https://windventure.fr
+    
+    - name: Upload Playwright Report
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 7
+
+  lighthouse-css-audit:
+    name: 🚦 Lighthouse CSS Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Lighthouse CI
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls: |
+          https://windventure.fr
+          https://windventure.fr/css-test
+        configPath: './lighthouse.config.js'
+        uploadArtifacts: true
+        temporaryPublicStorage: true

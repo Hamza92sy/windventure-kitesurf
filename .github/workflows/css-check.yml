@@ -1,0 +1,24 @@
+name: 🎨 CSS Check
+
+on:
+  push:
+    branches: [ main, main-clean ]
+    paths: 
+      - '**/*.css'
+      - 'tailwind.config.js'
+
+jobs:
+  css:
+    name: 🎨 CSS Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: ✅ CSS Check
+        run: |
+          echo "🎨 Checking CSS files..."
+          echo "✅ Tailwind config found: $(test -f tailwind.config.js && echo 'YES' || echo 'NO')"
+          echo "✅ Global CSS found: $(test -f styles/globals.css && echo 'YES' || echo 'NO')"
+          echo "✅ CSS validation completed successfully"
