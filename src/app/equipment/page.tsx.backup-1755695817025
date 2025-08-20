@@ -22,7 +22,7 @@ export default function EquipmentPage() {
           ].map((item, index) => (
             <div
               key={index}
-              className="absolute text-4xl opacity-20 animate-float md:text-4xl lg:text-5xl"
+              className="absolute text-4xl opacity-20 animate-float"
               style={{
                 top: item.top,
                 bottom: item.bottom,
@@ -38,7 +38,7 @@ export default function EquipmentPage() {
         
         {/* Hero Content */}
         <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center text-white max-w-4xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="text-center text-white max-w-4xl mx-auto px-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               Premium{" "}
               <span className="bg-gradient-to-r from-sahara-gold-400 to-sahara-gold-600 bg-clip-text text-transparent">
@@ -71,7 +71,7 @@ export default function EquipmentPage() {
 
       {/* Brands Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 px-4 sm:px-6 lg:px-8 px-4 sm:px-6 lg:px-8 px-4 sm:px-6 lg:px-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Trusted{" "}

@@ -1,0 +1,620 @@
+/* Google Fonts loaded via next/font/google instead of @import for better performance */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced globals.css with Dakhla theme and mobile optimizations */
+
+:root {
+  /* Dakhla color palette */
+  --dakhla-blue: #3b82f6;
+  --lagoon-turquoise: #2dd4bf;
+  --sahara-gold: #fbbf24;
+  --wind-white: #ffffff;
+
+  /* Ocean depth colors */
+  --ocean-deep: #1e40af;
+  --ocean-surface: #60a5fa;
+  --lagoon-shallow: #a7f3d0;
+
+  /* Sand and desert */
+  --sand-light: #fef3c7;
+  --sand-medium: #fcd34d;
+  --sand-dark: #d97706;
+
+  /* UI colors */
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+
+  /* Glass morphism */
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 15, 23, 42;
+    --background-end-rgb: 30, 41, 59;
+  }
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* 🚨 CRITICAL FALLBACK STYLES - PRODUCTION SAFETY */
+/* Garantit l'affichage même si Tailwind ne se charge pas */
+
+/* Fallback pour les conteneurs principaux */
+.min-h-screen {
+  min-height: 100vh !important;
+}
+
+.bg-sky {
+  background-color: #f0f9ff !important;
+}
+
+/* Fallback pour les grilles */
+.grid {
+  display: grid !important;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Fallback pour les espacements */
+.p-6 {
+  padding: 1.5rem !important;
+}
+
+.px-6 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.py-16 {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+.py-20 {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-8 {
+  margin-bottom: 2rem !important;
+}
+
+.mb-12 {
+  margin-bottom: 3rem !important;
+}
+
+/* Fallback pour les couleurs de texte */
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-gray-900 {
+  color: #111827 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.text-cyan-600 {
+  color: #0891b2 !important;
+}
+
+/* Fallback pour les tailles de texte */
+.text-3xl {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
+
+.text-4xl {
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+.text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+/* Fallback pour les poids de police */
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.font-black {
+  font-weight: 900 !important;
+}
+
+/* Fallback pour les bordures arrondies */
+.rounded-2xl {
+  border-radius: 1rem !important;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem !important;
+}
+
+/* Fallback pour les ombres */
+.shadow-xl {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Fallback pour les gradients */
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)) !important;
+}
+
+.from-blue-50 {
+  --tw-gradient-from: #eff6ff !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(239, 246, 255, 0)) !important;
+}
+
+.to-cyan-50 {
+  --tw-gradient-to: #ecfeff !important;
+}
+
+.from-slate-50 {
+  --tw-gradient-from: #f8fafc !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(248, 250, 252, 0)) !important;
+}
+
+.to-blue-50 {
+  --tw-gradient-to: #eff6ff !important;
+}
+
+/* Fallback pour les boutons */
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+}
+
+.from-cyan-600 {
+  --tw-gradient-from: #0891b2 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(8, 145, 178, 0)) !important;
+}
+
+.to-blue-600 {
+  --tw-gradient-to: #2563eb !important;
+}
+
+/* Fallback pour les images */
+.object-cover {
+  object-fit: cover !important;
+}
+
+.w-full {
+  width: 100% !important;
+}
+
+.h-full {
+  height: 100% !important;
+}
+
+/* Fallback pour les flexbox */
+.flex {
+  display: flex !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.justify-between {
+  justify-content: space-between !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+/* Fallback pour les gaps */
+.gap-4 {
+  gap: 1rem !important;
+}
+
+.gap-8 {
+  gap: 2rem !important;
+}
+
+/* Fallback pour les max-width */
+.max-w-6xl {
+  max-width: 72rem !important;
+}
+
+.max-w-7xl {
+  max-width: 80rem !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Fallback pour les positions */
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.inset-0 {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+}
+
+/* Fallback pour les z-index */
+.z-10 {
+  z-index: 10 !important;
+}
+
+.z-50 {
+  z-index: 50 !important;
+}
+
+/* Fallback pour les transitions */
+.transition-all {
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+.duration-300 {
+  transition-duration: 300ms !important;
+}
+
+/* Fallback pour les hover */
+.hover\:shadow-xl:hover {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Fallback pour les responsive */
+@media (min-width: 640px) {
+  .sm\:flex-row {
+    flex-direction: row !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:text-4xl {
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-5xl {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* 🚨 GARANTIE D'AFFICHAGE CRITIQUE */
+/* Styles de sécurité pour les composants principaux */
+
+/* Garantie pour NeonHero */
+.bg-slate-900 {
+  background-color: #0f172a !important;
+}
+
+/* Garantie pour PackageCard */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Garantie pour GalleryPlus */
+.bg-gradient-to-br.from-slate-900.via-gray-900.to-slate-900 {
+  background-image: linear-gradient(to bottom right, #0f172a, #111827, #0f172a) !important;
+}
+
+/* Garantie pour les liens */
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Garantie pour les images */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Garantie pour le body */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  line-height: 1.5 !important;
+  color: #111827 !important;
+  background-color: #ffffff !important;
+}
+
+/* Garantie pour les titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5em !important;
+}
+
+/* Garantie pour les paragraphes */
+p {
+  margin-bottom: 1rem !important;
+}
+
+/* Garantie pour les listes */
+ul,
+ol {
+  margin-bottom: 1rem !important;
+  padding-left: 1.5rem !important;
+}
+
+/* Garantie pour les boutons */
+button,
+.btn {
+  cursor: pointer !important;
+  border: none !important;
+  outline: none !important;
+  font-family: inherit !important;
+}
+
+/* Garantie pour les inputs */
+input,
+textarea,
+select {
+  font-family: inherit !important;
+  font-size: inherit !important;
+}
+
+/* 🎯 OPTIMISATIONS MOBILE CRITIQUES */
+@media (max-width: 640px) {
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+
+  .text-4xl {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+  }
+
+  .py-16 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .py-20 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+/* 🚀 ANIMATIONS DE FALLBACK */
+/* Garantit que les animations fonctionnent même sans Framer Motion */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out !important;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out !important;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out !important;
+}
+
+/* 🎨 STYLES SPÉCIAUX DAKHLA */
+/* Couleurs et effets spécifiques au thème Dakhla */
+
+.dakhla-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 50%, #fbbf24 100%) !important;
+}
+
+.lagoon-gradient {
+  background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%) !important;
+}
+
+.desert-gradient {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%) !important;
+}
+
+/* 🚨 GARANTIE FINALE */
+/* Dernière ligne de défense pour l'affichage */
+
+* {
+  /* Garantit que tous les éléments sont visibles */
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Exception pour les éléments qui doivent être flex */
+.flex,
+.flex-col,
+.flex-row {
+  display: flex !important;
+}
+
+/* Exception pour les éléments qui doivent être grid */
+.grid {
+  display: grid !important;
+}
+
+/* Exception pour les éléments qui doivent être inline */
+.inline,
+.inline-block {
+  display: inline-block !important;
+}
+
+/* Exception pour les éléments qui doivent être cachés */
+.hidden,
+.sr-only {
+  display: none !important;
+}
+
+/* 📜 CUSTOM SCROLLBAR STYLES */
+/* Styles personnalisés pour les barres de défilement */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #06b6d4;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0891b2;
+}
+
+/* Firefox scrollbar support */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 #374151;
+}
+
+/* 🎬 LOADING PAGE ANIMATIONS */
+/* Custom animations for loading states */
+
+@keyframes loading-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes animate-float {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-15px) translateX(5px);
+    opacity: 0.9;
+  }
+}
+
+.animate-float {
+  animation: animate-float 4s ease-in-out infinite;
+}

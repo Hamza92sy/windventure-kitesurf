@@ -58,7 +58,16 @@
     "test:csp:prod": "node scripts/csp-live-diagnostic.js",
     "test:csp:headers": "curl -s -D - https://windventure.fr -o /dev/null | grep -i 'content-security-policy'",
     "debug:csp": "npm run test:csp:prod",
-    "force-csp": "node scripts/force-csp-headers.js"
+    "force-csp": "node scripts/force-csp-headers.js",
+    "fix:windventure": "chmod +x fix-windventure-complete.sh && ./fix-windventure-complete.sh",
+    "diagnostic:visual": "node scripts/visual-diagnostic-complete.js",
+    "fix:design": "node scripts/auto-fix-windventure-design.js",
+    "test:visual:complete": "npm run diagnostic:visual && npm run fix:design",
+    "dev:debug": "npm run build && npm run dev",
+    "check:tailwind": "npx tailwindcss -i ./src/app/globals.css -o ./styles/output.css --watch",
+    "fix:complete": "npm run fix:windventure && npm run dev:debug",
+    "restore:backup": "node scripts/restore-backup.js",
+    "report:generate": "node scripts/generate-report.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",
@@ -88,6 +97,7 @@
   "devDependencies": {
     "@playwright/test": "^1.54.2",
     "@sentry/cli": "^2.52.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^20.0.0",

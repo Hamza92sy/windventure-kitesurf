@@ -1,0 +1,81 @@
+
+> windventure@1.0.0 build
+> next build
+
+[@sentry/nextjs] ACTION REQUIRED: To instrument navigations, the Sentry SDK requires you to export an `onRouterTransitionStart` hook from your `instrumentation-client.(js|ts)` file. You can do so by adding `export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;` to the file.
+  ▲ Next.js 14.2.31
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · instrumentationHook
+
+   Creating an optimized production build ...
+warn  - It seems like you don't have a global error handler set up. It is recommended that you add a global-error.js file with Sentry instrumentation so that React rendering errors are reported to Sentry. Read more: https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#react-render-errors-in-app-router (you can suppress this warning by setting SENTRY_SUPPRESS_GLOBAL_ERROR_HANDLER_FILE_WARNING=1 as environment variable)
+[@sentry/nextjs] DEPRECATION WARNING: It is recommended renaming your `sentry.client.config.ts` file, or moving its content to `instrumentation-client.ts`. When using Turbopack `sentry.client.config.ts` will no longer work. Read more about the `instrumentation-client.ts` file: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (191kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (139kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ⚠ Compiled with warnings
+
+./sentry.client.config.ts
+Attempted import error: 'BrowserTracing' is not exported from '@sentry/nextjs' (imported as 'Sentry').
+
+./sentry.client.config.ts
+Attempted import error: 'nextRouterInstrumentation' is not exported from '@sentry/nextjs' (imported as 'Sentry').
+
+./sentry.client.config.ts
+Attempted import error: 'Replay' is not exported from '@sentry/nextjs' (imported as 'Sentry').
+
+./sentry.client.config.ts
+Attempted import error: 'BrowserTracing' is not exported from '@sentry/nextjs' (imported as 'Sentry').
+
+./sentry.client.config.ts
+Attempted import error: 'nextRouterInstrumentation' is not exported from '@sentry/nextjs' (imported as 'Sentry').
+
+./sentry.client.config.ts
+Attempted import error: 'Replay' is not exported from '@sentry/nextjs' (imported as 'Sentry').
+
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/8) ...
+ ⚠ Unsupported metadata viewport is configured in metadata export in /css-monitoring. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /css-monitoring. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_not-found. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /_not-found. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /css-test. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /css-test. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+   Generating static pages (2/8) 
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+   Generating static pages (4/8) 
+   Generating static pages (6/8) 
+ ✓ Generating static pages (8/8)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    5.05 kB         197 kB
+├ ○ /_not-found                          1.07 kB         193 kB
+├ ƒ /api/create-checkout-session         0 B                0 B
+├ ƒ /api/stripe-webhook                  0 B                0 B
+├ ○ /css-monitoring                      2.95 kB         195 kB
+└ ○ /css-test                            314 B           192 kB
++ First Load JS shared by all            192 kB
+  ├ chunks/52774a7f-b79dd891a8ac80b9.js  36.6 kB
+  ├ chunks/824-c81d9f6ed2e46350.js       98.1 kB
+  ├ chunks/fd9d1056-f942727f5ca6adb5.js  53.8 kB
+  └ other shared chunks (total)          3.38 kB
+
+
+ƒ Middleware                             76 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

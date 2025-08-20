@@ -33,7 +33,7 @@ class CSPLiveDiagnostic {
     console.log('\n📡 1. Vérification des headers HTTP...');
     
     return new Promise((resolve) => {
-      const req = https.request('https://windventure.fr', { method: 'HEAD' }, (res) => {
+      const req = https.request('https://www.windventure.fr', { method: 'HEAD' }, (res) => {
         console.log(`   Status: ${res.statusCode}`);
         
         // Vérifier CSP
@@ -120,7 +120,7 @@ class CSPLiveDiagnostic {
     });
     
     try {
-      await page.goto('https://windventure.fr', { 
+      await page.goto('https://www.windventure.fr', { 
         waitUntil: 'networkidle0',
         timeout: 30000 
       });

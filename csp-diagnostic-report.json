@@ -1,53 +1,23 @@
 {
   "headers": {
-    "csp": null,
-    "x-frame-options": null,
-    "x-content-type-options": null,
+    "csp": "default-src 'self' windventure.fr *.windventure.fr *.vercel.app; script-src 'self' windventure.fr *.windventure.fr *.vercel.app 'unsafe-inline' 'unsafe-eval'; style-src 'self' windventure.fr *.windventure.fr *.vercel.app 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.googleapis.com fonts.gstatic.com data:; connect-src 'self' *.sentry.io api.vercel.com vitals.vercel-insights.com; img-src 'self' data: blob: windventure.fr *.windventure.fr *.vercel.app; frame-src 'self' *.vercel.app; object-src 'none'; base-uri 'self'; form-action 'self'",
+    "x-frame-options": "DENY",
+    "x-content-type-options": "nosniff",
     "strict-transport-security": "max-age=63072000",
-    "referrer-policy": null
+    "referrer-policy": "strict-origin-when-cross-origin"
   },
   "violations": [
     {
-      "type": "network",
-      "url": "https://www.windventure.fr/pattern.svg",
-      "status": 404,
-      "resourceType": "image"
-    },
-    {
-      "type": "network",
-      "url": "https://www.windventure.fr/favicon.ico",
-      "status": 404,
-      "resourceType": "other"
-    },
-    {
       "type": "navigation",
-      "message": "page.waitForTimeout is not a function"
+      "message": "Navigation timeout of 30000 ms exceeded"
     }
   ],
   "recommendations": [
     {
       "priority": "HIGH",
-      "action": "Implémenter CSP",
-      "description": "Aucun header Content-Security-Policy détecté",
-      "solution": "Utiliser middleware.ts ou vercel.json"
-    },
-    {
-      "priority": "MEDIUM",
-      "action": "Ajouter X-Frame-Options",
-      "description": "Protection contre le clickjacking manquante",
-      "solution": "Ajouter X-Frame-Options: DENY"
-    },
-    {
-      "priority": "HIGH",
       "action": "Réparer Tailwind CSS",
       "description": "Tailwind CSS ne semble pas chargé correctement",
       "solution": "Vérifier la CSP style-src et script-src"
-    },
-    {
-      "priority": "MEDIUM",
-      "action": "Corriger erreurs réseau",
-      "description": "2 ressources en erreur",
-      "solution": "Vérifier les URLs et la configuration du serveur"
     }
   ],
   "status": "warning"
