@@ -1,3 +1,4 @@
+import React from 'react';
 #!/usr/bin/env node
 
 const fs = require('fs');
@@ -30,9 +31,7 @@ function validateLighthouseMetrics() {
   const results = [];
 
   reports.forEach((report, index) => {
-    console.log(`\n📊 Analyzing report ${index + 1}/${reports.length}`);
-    console.log(`URL: ${report.finalUrl}`);
-    
+            
     const metrics = report.audits;
     const failures = [];
 
@@ -66,12 +65,11 @@ function validateLighthouseMetrics() {
       failures.forEach(failure => console.error(`   - ${failure}`));
       hasFailures = true;
     } else {
-      console.log('✅ All performance metrics pass!');
-    }
+          }
 
     // Afficher le score global
     const perfScore = report.categories.performance.score * 100;
-    console.log(`\n🎯 Performance Score: ${perfScore.toFixed(0)}%`);
+    }%`);
     
     if (perfScore < 85) {
       console.error(`❌ Performance score below threshold (85%)`);
@@ -98,8 +96,7 @@ function validateLighthouseMetrics() {
     console.error('\n❌ Performance validation failed');
     process.exit(1);
   } else {
-    console.log('\n✅ All performance validations passed!');
-  }
+      }
 }
 
 // Générer un rapport de synthèse
@@ -124,13 +121,12 @@ function generateSummaryReport(results) {
     JSON.stringify(report, null, 2)
   );
 
-  console.log('\n📈 Performance Summary:');
-  console.log(`Average Score: ${report.summary.avgScore.toFixed(1)}%`);
-  console.log(`Average FCP: ${report.summary.avgMetrics.fcp.toFixed(0)}ms`);
-  console.log(`Average LCP: ${report.summary.avgMetrics.lcp.toFixed(0)}ms`);
-  console.log(`Average CLS: ${report.summary.avgMetrics.cls.toFixed(3)}`);
-  console.log(`Average TBT: ${report.summary.avgMetrics.tbt.toFixed(0)}ms`);
-  console.log(`Average TTI: ${report.summary.avgMetrics.tti.toFixed(0)}ms`);
+    }%`);
+  }ms`);
+  }ms`);
+  }`);
+  }ms`);
+  }ms`);
 }
 
 // Exécution principale

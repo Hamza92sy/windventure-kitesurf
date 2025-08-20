@@ -1,3 +1,4 @@
+import React from 'react';
 #!/usr/bin/env node
 
 /**
@@ -17,17 +18,14 @@ class VisualAutoFixer {
   }
 
   async run() {
-    console.log('🔧 Auto-Fix Visuel en cours...\n');
-    
+        
     // Charger le rapport de diagnostic
     if (!fs.existsSync(this.reportPath)) {
-      console.log('❌ Rapport de diagnostic non trouvé. Lancez d\'abord: npm run debug:visual');
-      process.exit(1);
+            process.exit(1);
     }
     
     const report = JSON.parse(fs.readFileSync(this.reportPath, 'utf8'));
-    console.log(`📊 ${report.issues.length} problèmes détectés`);
-    
+        
     // Créer une sauvegarde
     this.createBackup();
     
@@ -48,8 +46,7 @@ class VisualAutoFixer {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const backupDir = `backup-${timestamp}`;
     
-    console.log(`💾 Création d'une sauvegarde: ${backupDir}`);
-    
+        
     try {
       execSync(`cp -r src ${backupDir}-src`);
       execSync(`cp -r public ${backupDir}-public`);
@@ -67,8 +64,7 @@ class VisualAutoFixer {
     const missingAssets = issues.filter(i => i.type === 'missing_asset');
     if (missingAssets.length === 0) return;
     
-    console.log('🔧 Correction des assets manquants...');
-    
+        
     missingAssets.forEach(asset => {
       if (asset.resourceType === 'stylesheet') {
         this.fixMissingStylesheet(asset);
@@ -83,8 +79,7 @@ class VisualAutoFixer {
   fixMissingStylesheet(asset) {
     // Vérifier si c'est un problème de Tailwind CSS
     if (asset.url.includes('tailwind') || asset.url.includes('styles')) {
-      console.log('   🎨 Réparation de Tailwind CSS...');
-      
+            
       // Reconstruire les styles
       try {
         execSync('npm run build', { stdio: 'pipe' });
@@ -96,8 +91,7 @@ class VisualAutoFixer {
   }
   
   fixMissingScript(asset) {
-    console.log(`   📜 Script manquant: ${asset.url}`);
-    
+        
     // Vérifier si c'est un script Next.js
     if (asset.url.includes('_next/static')) {
       try {
@@ -110,8 +104,7 @@ class VisualAutoFixer {
   }
   
   fixMissingImage(asset) {
-    console.log(`   🖼️ Image manquante: ${asset.url}`);
-    
+        
     // Créer une image placeholder si nécessaire
     const imagePath = asset.url.replace(/^https?:\/\/[^\/]+/, './public');
     const dir = path.dirname(imagePath);
@@ -136,14 +129,12 @@ class VisualAutoFixer {
     const tailwindIssues = issues.filter(i => i.type === 'css_framework');
     if (tailwindIssues.length === 0) return;
     
-    console.log('🎨 Configuration de Tailwind CSS...');
-    
+        
     const tailwindConfigPath = 'tailwind.config.js';
     
     // Vérifier si le fichier existe
     if (!fs.existsSync(tailwindConfigPath)) {
-      console.log('   📝 Création du fichier tailwind.config.js...');
-      
+            
       const config = `/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -190,8 +181,7 @@ module.exports = {
       const content = fs.readFileSync(globalsPath, 'utf8');
       
       if (!content.includes('@tailwind')) {
-        console.log('   📝 Ajout des directives Tailwind...');
-        
+                
         const tailwindDirectives = `@tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -208,8 +198,7 @@ module.exports = {
     const responsiveIssues = issues.filter(i => i.type === 'responsive_issue');
     if (responsiveIssues.length === 0) return;
     
-    console.log('📱 Correction des problèmes responsive...');
-    
+        
     // Générer un CSS de correction
     let fixCSS = `
 /* Auto-generated responsive fixes */
@@ -250,16 +239,13 @@ body {
     fs.writeFileSync(fixPath, fixCSS);
     this.fixes.push('CSS responsive généré');
     
-    console.log(`   ✅ Fixes CSS créés: ${fixPath}`);
-    console.log('   📝 Importez ce fichier dans votre layout principal');
-  }
+          }
   
   async fixImageIssues(issues) {
     const imageIssues = issues.filter(i => i.type === 'broken_image');
     if (imageIssues.length === 0) return;
     
-    console.log('🖼️ Correction des images...');
-    
+        
     // Générer un composant d'image optimisé
     const imageComponentPath = 'src/components/OptimizedImage.tsx';
     const imageComponent = `import { useState } from 'react';
@@ -339,8 +325,7 @@ export default function OptimizedImage({
     const overflowIssues = issues.filter(i => i.type === 'layout_overflow');
     if (overflowIssues.length === 0) return;
     
-    console.log('📐 Correction des débordements...');
-    
+        
     const overflowCSS = `
 /* Auto-generated overflow fixes */
 html, body {
@@ -375,8 +360,7 @@ html, body {
   }
   
   async optimizePerformance(metrics) {
-    console.log('⚡ Optimisation des performances...');
-    
+        
     // Créer un next.config.js optimisé
     const nextConfigPath = 'next.config.js';
     let nextConfig = '';
@@ -413,25 +397,16 @@ module.exports = nextConfig;`;
   }
   
   generateFixReport() {
-    console.log('\\n' + '='.repeat(60));
-    console.log('🔧 RAPPORT DES CORRECTIONS AUTOMATIQUES');
-    console.log('='.repeat(60));
+    );
+        );
     
     if (this.fixes.length > 0) {
-      console.log('\\n✅ CORRECTIONS APPLIQUÉES:');
-      this.fixes.forEach(fix => {
-        console.log(`   ✓ ${fix}`);
-      });
+            this.fixes.forEach(fix => {
+              });
     } else {
-      console.log('\\n💡 Aucune correction automatique disponible');
-    }
+          }
     
-    console.log('\\n📋 PROCHAINES ÉTAPES MANUELLES:');
-    console.log('   1. Vérifiez les changements avec git diff');
-    console.log('   2. Testez le build: npm run build');
-    console.log('   3. Relancez l\\'analyse: npm run debug:visual');
-    console.log('   4. Validez les corrections en local');
-    
+                        
     // Sauvegarder le rapport
     const report = {
       timestamp: new Date().toISOString(),
@@ -445,8 +420,7 @@ module.exports = nextConfig;`;
     };
     
     fs.writeFileSync('auto-fix-report.json', JSON.stringify(report, null, 2));
-    console.log('\\n📁 Rapport complet: auto-fix-report.json');
-  }
+      }
 }
 
 // Exécution

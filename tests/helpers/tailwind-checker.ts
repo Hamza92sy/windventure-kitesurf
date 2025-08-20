@@ -30,8 +30,7 @@ export class TailwindChecker {
       if (styles[property] !== expectedValue) {
         console.warn(`❌ ${selector} .${className}: ${property} = ${styles[property]} (attendu: ${expectedValue})`);
       } else {
-        console.log(`✅ ${selector} .${className}: ${property} = ${expectedValue}`);
-      }
+              }
     }
     
     return styles;
@@ -52,8 +51,7 @@ export class TailwindChecker {
         throw new Error(`🚨 Style inline destructeur détecté sur ${selector}: ${inlineStyle}`);
       }
     } else {
-      console.log(`✅ Pas de style inline sur ${selector}`);
-    }
+          }
     
     return inlineStyle;
   }
@@ -62,8 +60,7 @@ export class TailwindChecker {
    * Test complet Tailwind
    */
   async runFullCheck() {
-    console.log('🔍 === TAILWIND CSS CHECK ===');
-    
+        
     // 1. Vérifie qu'il n'y a pas de style inline destructeur
     await this.checkNoInlineStyleOverride('body');
     
@@ -72,8 +69,7 @@ export class TailwindChecker {
     
     if (await tailwindElement.count() > 0) {
       const classes = await tailwindElement.getAttribute('class');
-      console.log(`📦 Classes Tailwind trouvées: ${classes}`);
-      
+            
       // 3. Vérifie que les styles sont appliqués
       const bgColor = await tailwindElement.evaluate(el => window.getComputedStyle(el).backgroundColor);
       const textColor = await tailwindElement.evaluate(el => window.getComputedStyle(el).color);
@@ -84,8 +80,7 @@ export class TailwindChecker {
         return false;
       }
       
-      console.log(`✅ Styles Tailwind appliqués - bg: ${bgColor}, text: ${textColor}`);
-      return true;
+            return true;
     }
     
     console.warn('❌ Aucun élément Tailwind trouvé');

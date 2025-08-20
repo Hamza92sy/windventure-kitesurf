@@ -1,3 +1,4 @@
+import React from 'react';
 import { test, expect, Page } from '@playwright/test';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
@@ -235,7 +236,7 @@ test.describe('Visual Performance', () => {
       });
     });
     
-    console.log('CLS Score:', (cls as any).cls);
+    .cls);
     
     // Le CLS doit être < 0.1
     expect((cls as any).cls).toBeLessThan(0.1);

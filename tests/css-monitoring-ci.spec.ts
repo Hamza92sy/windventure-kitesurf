@@ -28,8 +28,7 @@ test.describe('CI/CD CSS Health Check', () => {
     );
     
     // Si background est transparent ou blanc par défaut, le CSS ne fonctionne pas
-    console.log('Background color detected:', backgroundColor);
-    
+        
     // Le test passe même si les styles ne sont pas appliqués, mais on log le problème
     if (backgroundColor === 'rgba(0, 0, 0, 0)' || backgroundColor === 'rgb(255, 255, 255)') {
       console.warn('⚠️ CSS styles may not be applied - element has default styling');

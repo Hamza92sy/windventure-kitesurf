@@ -10,9 +10,7 @@ export default function CSSFixer() {
       
       // Log pour debug
       if (body.style.cssText) {
-        console.log('🚨 Inline styles détectés sur body:', body.style.cssText);
-        console.log('🧹 Nettoyage des styles inline...');
-      }
+                      }
       
       // Supprime TOUS les styles inline
       body.removeAttribute('style');
@@ -22,8 +20,7 @@ export default function CSSFixer() {
         body.className = `${body.className} min-h-screen bg-gradient-to-br from-slate-50 to-blue-50`.trim();
       }
       
-      console.log('✅ Styles inline supprimés, Tailwind reprend le contrôle');
-    };
+          };
 
     // Nettoyage immédiat
     cleanBodyStyles();

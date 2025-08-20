@@ -17,12 +17,11 @@ test.describe('Smart CSS Validation', () => {
       
       // Log le CSS chargé
       const cssLinks = await page.locator('link[rel="stylesheet"]').all();
-      console.log(`📄 ${cssLinks.length} fichier(s) CSS trouvé(s)`);
+       CSS trouvé(s)`);
       
       for (const link of cssLinks) {
         const href = await link.getAttribute('href');
-        console.log(`  - ${href}`);
-      }
+              }
     }
     
     // Le test passe avec warning si CSS ne fonctionne pas
@@ -41,8 +40,7 @@ test.describe('Smart CSS Validation', () => {
       
       // bg-red-500 devrait être rgb(239, 68, 68)
       expect(bgColor).toMatch(/rgb\(239,\s*68,\s*68\)/);
-      console.log('✅ Page test CSS: couleurs correctes');
-    } else {
+          } else {
       console.warn('⚠️ Page test CSS non trouvée ou non stylée');
     }
   });
