@@ -54,7 +54,10 @@
     "lint:report": "eslint . --format json --output-file eslint-report.json",
     "auto-fix:eslint": "node scripts/auto-fix-eslint.js",
     "pre-commit": "npm run lint:fix && npm run test:unit",
-    "ci:lint": "npm run lint -- --max-warnings 0"
+    "ci:lint": "npm run lint -- --max-warnings 0",
+    "test:csp:prod": "node scripts/csp-live-diagnostic.js",
+    "test:csp:headers": "curl -s -D - https://windventure.fr -o /dev/null | grep -i 'content-security-policy'",
+    "debug:csp": "npm run test:csp:prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",
