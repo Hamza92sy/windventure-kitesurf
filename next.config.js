@@ -65,11 +65,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https:", // Sentry/Vercel compatible
-              "style-src 'self' 'unsafe-inline' https:",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: https://*.windventure.fr https://windventure.fr", // Fix pour Next.js assets
+              "style-src 'self' 'unsafe-inline' https: https://*.windventure.fr https://windventure.fr https://fonts.googleapis.com",
               "img-src * data: blob:",
-              "font-src 'self' data: https:",
-              "connect-src * wss: ws:",
+              "font-src 'self' data: https: https://fonts.gstatic.com",
+              "connect-src * wss: ws: https://*.sentry.io https://*.vercel.com",
               "frame-ancestors 'none'",
             ].join('; '),
           },

@@ -1,25 +1,36 @@
 module.exports = {
   ci: {
     collect: {
+      startServerCommand: 'npm run start',
+      startServerReadyPattern: 'ready on',
       numberOfRuns: 3,
       settings: {
-        onlyCategories: ['performance'],
-        // Audit spécifique CSS
-        onlyAudits: [
-          'render-blocking-resources',
-          'unused-css-rules',
-          'critical-request-chains',
-          'first-contentful-paint',
-          'largest-contentful-paint',
-        ],
+        preset: 'desktop',
+        throttling: {
+          rttMs: 40,
+          throughputKbps: 10240,
+          cpuSlowdownMultiplier: 1,
+        },
       },
     },
     assert: {
+      preset: 'lighthouse:recommended',
       assertions: {
-        'unused-css-rules': ['warn', { maxLength: 0.1 }], // Max 10% CSS inutilisé
-        'render-blocking-resources': 'off', // Tailwind CSS peut être bloquant, c'est normal
-        'first-contentful-paint': ['warn', { maxNumericValue: 2000 }],
+        'categories:performance': ['error', { minScore: 0.85 }],
+        'categories:accessibility': ['error', { minScore: 0.90 }],
+        'categories:best-practices': ['error', { minScore: 0.90 }],
+        'categories:seo': ['error', { minScore: 0.90 }],
+        'first-contentful-paint': ['error', { maxNumericValue: 2000 }],
+        'largest-contentful-paint': ['error', { maxNumericValue: 3000 }],
+        'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }],
+        'total-blocking-time': ['error', { maxNumericValue: 300 }],
+        'interactive': ['error', { maxNumericValue: 5000 }],
+        'max-potential-fid': ['error', { maxNumericValue: 200 }],
+        'server-response-time': ['error', { maxNumericValue: 600 }],
       },
     },
+    upload: {
+      target: 'temporary-public-storage',
+    },
   },
-};
+}
