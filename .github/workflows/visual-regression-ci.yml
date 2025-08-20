@@ -340,7 +340,9 @@ jobs:
         uses: actions/download-artifact@v4
 
       - name: 📤 Update Notion Database
-        if: secrets.NOTION_API_KEY != ''
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        if: env.NOTION_API_KEY != ''
         run: |
           # Calculer le statut global
           VISUAL_STATUS="✅ OK"
