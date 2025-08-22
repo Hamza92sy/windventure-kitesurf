@@ -22,9 +22,9 @@ const WindVentureHomepage = () => {
               <a href="#testimonials" className="text-gray-700 hover:text-cyan-600 transition-colors font-medium">Reviews</a>
               <a href="#contact" className="text-gray-700 hover:text-cyan-600 transition-colors font-medium">Contact</a>
             </div>
-            <button className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+            <Link href="/packages" className="inline-block bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
               Book Now
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -50,15 +50,15 @@ const WindVentureHomepage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+              <Link href="/packages" className="inline-flex bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 Book Your Experience
                 <ArrowRight className="h-5 w-5" />
-              </button>
-              <button className="bg-white border-2 border-cyan-600 text-cyan-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-50 transition-all duration-300 flex items-center gap-2">
-                <Phone className="h-5 w-5" />
-                Call +212 XXX XXX XXX
-              </button>
+              </Link>
+              <Link href="/reservations" className="bg-white border-2 border-cyan-600 text-cyan-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-50 transition-all duration-300 flex items-center gap-2">
+                <Mail className="h-5 w-5" />
+                Contact Us
+              </Link>
             </div>
 
             {/* Stats */}
@@ -141,24 +141,24 @@ const WindVentureHomepage = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Beginner Package */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Beginner Private Package */}
             <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               <div className="bg-gradient-to-r from-green-400 to-emerald-500 h-2 group-hover:h-3 transition-all duration-300"></div>
               <div className="p-8">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900">Beginner Discovery</h3>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+                  <h3 className="text-2xl font-bold text-gray-900">Beginner Private</h3>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">One-on-One</span>
                 </div>
-                <p className="text-gray-600 mb-6">Perfect introduction to kitesurfing in paradise</p>
+                <p className="text-gray-600 mb-6">Master kitesurfing with personalized one-on-one instruction</p>
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span className="text-gray-700">3 days intensive course</span>
+                    <span className="text-gray-700">6 hours private training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span className="text-gray-700">IKO certified instructor</span>
+                    <span className="text-gray-700">Private IKO instructor</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-green-500" />
@@ -173,15 +173,50 @@ const WindVentureHomepage = () => {
                     <span className="text-gray-700">Beach transfers</span>
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">€450</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">€720</div>
                 <div className="text-gray-500 mb-6">per person</div>
-                <button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                <Link href="/book?package=beginner-private" className="block w-full text-center bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
                   Book Beginner Package
-                </button>
+                </Link>
               </div>
             </div>
 
-            {/* Intermediate Package */}
+            {/* Beginner Semi-Private Package */}
+            <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
+              <div className="bg-gradient-to-r from-teal-400 to-cyan-500 h-2 group-hover:h-3 transition-all duration-300"></div>
+              <div className="p-8">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900">Semi-Private</h3>
+                  <span className="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-semibold">2-3 People</span>
+                </div>
+                <p className="text-gray-600 mb-6">Learn with friends in small groups, perfect balance of attention</p>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-teal-500 flex-shrink-0" />
+                    <span className="text-gray-700">Small group (2-3 people)</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-teal-500 flex-shrink-0" />
+                    <span className="text-gray-700">8 hours training</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-teal-500 flex-shrink-0" />
+                    <span className="text-gray-700">Group activities</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-teal-500 flex-shrink-0" />
+                    <span className="text-gray-700">IKO certification</span>
+                  </div>
+                </div>
+                <div className="text-3xl font-bold text-gray-900">€1,100</div>
+                <div className="text-gray-500 mb-6">per person</div>
+                <Link href="/book?package=beginner-semi-private" className="block w-full text-center bg-gradient-to-r from-teal-500 to-cyan-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                  Book Semi-Private
+                </Link>
+              </div>
+            </div>
+
+            {/* Combined Package - Most Popular */}
             <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group transform scale-105">
               <div className="bg-gradient-to-r from-blue-400 to-cyan-500 h-2 group-hover:h-3 transition-all duration-300"></div>
               <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-4 py-1 rounded-bl-lg font-semibold">
@@ -189,18 +224,18 @@ const WindVentureHomepage = () => {
               </div>
               <div className="p-8">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900">Progressive Week</h3>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Recommended</span>
+                  <h3 className="text-2xl font-bold text-gray-900">Combined Package</h3>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Most Popular</span>
                 </div>
-                <p className="text-gray-600 mb-6">Master your skills and ride independently</p>
+                <p className="text-gray-600 mb-6">The ultimate experience combining technique mastery with exploration</p>
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-blue-500" />
-                    <span className="text-gray-700">5 days progression</span>
+                    <span className="text-gray-700">12 hours training</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-blue-500" />
-                    <span className="text-gray-700">Advanced techniques</span>
+                    <span className="text-gray-700">3 different spots</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-blue-500" />
@@ -208,57 +243,57 @@ const WindVentureHomepage = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-blue-500" />
-                    <span className="text-gray-700">Downwind sessions</span>
+                    <span className="text-gray-700">Technique & adventure</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-blue-500" />
-                    <span className="text-gray-700">IKO certification</span>
+                    <span className="text-gray-700">Complete experience</span>
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">€750</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">€1,350</div>
                 <div className="text-gray-500 mb-6">per person</div>
-                <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                  Book Progressive Week
-                </button>
+                <Link href="/book?package=combined" className="block w-full text-center bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                  Book Combined Package
+                </Link>
               </div>
             </div>
 
-            {/* Expert Package */}
+            {/* Exploration Package */}
             <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group">
               <div className="bg-gradient-to-r from-purple-400 to-pink-500 h-2 group-hover:h-3 transition-all duration-300"></div>
               <div className="p-8">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900">Pro Experience</h3>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">Premium</span>
+                  <h3 className="text-2xl font-bold text-gray-900">Exploration Package</h3>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">Adventure</span>
                 </div>
-                <p className="text-gray-600 mb-6">Ultimate kitesurf experience with pro coaching</p>
+                <p className="text-gray-600 mb-6">Discover Dakhla's legendary spots from White Dune to Dragon Island</p>
                 <div className="space-y-3 mb-8">
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-purple-500" />
-                    <span className="text-gray-700">7 days unlimited</span>
+                    <span className="text-gray-700">10 hours coaching</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-purple-500" />
-                    <span className="text-gray-700">Personal coach</span>
+                    <span className="text-gray-700">Multiple locations</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-purple-500" />
-                    <span className="text-gray-700">Pro equipment</span>
+                    <span className="text-gray-700">Transport included</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-purple-500" />
-                    <span className="text-gray-700">Freestyle coaching</span>
+                    <span className="text-gray-700">Spot variety</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-purple-500" />
-                    <span className="text-gray-700">VIP treatment</span>
+                    <span className="text-gray-700">Local insights</span>
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">€1,200</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">€1,250</div>
                 <div className="text-gray-500 mb-6">per person</div>
-                <button className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                  Book Pro Experience
-                </button>
+                <Link href="/book?package=exploration" className="block w-full text-center bg-gradient-to-r from-purple-500 to-pink-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                  Book Exploration Package
+                </Link>
               </div>
             </div>
           </div>
@@ -343,15 +378,15 @@ const WindVentureHomepage = () => {
             Join us in Dakhla and discover why it's the world's premier kitesurfing destination
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-white text-cyan-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2">
+            <Link href="/packages" className="inline-flex bg-white text-cyan-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 items-center gap-2">
               <Calendar className="h-5 w-5" />
               Check Availability
               <ArrowRight className="h-5 w-5" />
-            </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-cyan-600 transition-all duration-300 flex items-center gap-2">
-              <Phone className="h-5 w-5" />
+            </Link>
+            <Link href="/reservations" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-cyan-600 transition-all duration-300 flex items-center gap-2">
+              <Mail className="h-5 w-5" />
               Contact Us Now
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -387,11 +422,11 @@ const WindVentureHomepage = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-gray-400" />
-                  <span className="text-gray-400">+212 XXX XXX XXX</span>
+                  <span className="text-gray-400">Contact via email</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-gray-400" />
-                  <span className="text-gray-400">info@windventure.fr</span>
+                  <span className="text-gray-400">contact@windventure.fr</span>
                 </div>
               </div>
             </div>

@@ -1,0 +1,5 @@
+=== UPTIME TEST ===
+Homepage: 200 - 0.620097s
+Packages: 200 - 0.352133s
+About: 404 - 0.412842s
+

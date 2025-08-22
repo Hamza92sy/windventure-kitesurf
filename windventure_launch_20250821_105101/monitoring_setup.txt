@@ -1,0 +1,22 @@
+=== MONITORING CONFIGURATION ===
+Timestamp: Thu Aug 21 10:51:03 +01 2025
+
+📊 MÉTRIQUES À SURVEILLER:
+- Uptime: > 99.9%
+- Response Time: < 1s
+- Lighthouse Performance: > 85
+- Stripe Success Rate: > 98%
+- Conversion Rate: À benchmarker
+
+🔧 OUTILS RECOMMANDÉS:
+1. Uptime Robot: uptimerobot.com
+2. Google PageSpeed Insights: API daily
+3. Stripe Dashboard: Automated reports
+4. Make.com: Workflow automation
+5. Notion: Centralized reporting
+
+⚙️ MAKE.COM WORKFLOW SETUP:
+Trigger: Schedule (every 4 hours)
+Modules: HTTP → Condition → Slack → Notion
+Webhook: https://windventure.fr/api/health-check
+

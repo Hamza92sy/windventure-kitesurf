@@ -1,0 +1,14 @@
+=== SEO METADATA ===
+Title:
+Non trouvé
+Description:
+Non trouvé
+Keywords:
+Non trouvé
+Open Graph:
+<meta property="og:title" content="WindVenture - Ultimate Kitesurf Experience in Dakhla, Morocco"/>
+<meta property="og:description" content="Experience the magic of kitesurfing in Dakhla&#x27;s legendary White Dune lagoon. Perfect conditions, expert instruction, unforgettable adventure."/>
+<meta property="og:url" content="https://windventure.fr"/>
+<meta property="og:image" content="https://windventure.fr/images/og-image.jpg"/>
+<meta property="og:image:width" content="1200"/>
+

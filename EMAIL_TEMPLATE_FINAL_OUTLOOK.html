@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+        }
+        .header { 
+            background: linear-gradient(135deg, #00b4d8, #0077b6); 
+            color: white; 
+            padding: 30px; 
+            text-align: center; 
+            border-radius: 10px 10px 0 0; 
+        }
+        .header h1 { 
+            margin: 0; 
+            font-size: 28px; 
+        }
+        .content { 
+            padding: 30px; 
+            background: #f8f9fa; 
+        }
+        .info-block { 
+            background: white; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        .info-block h3 { 
+            color: #0077b6; 
+            margin-top: 0; 
+            border-bottom: 2px solid #00b4d8; 
+            padding-bottom: 10px; 
+        }
+        .info-row { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 0; 
+            border-bottom: 1px solid #eee; 
+        }
+        .info-row:last-child { 
+            border-bottom: none; 
+        }
+        .label { 
+            font-weight: 600; 
+            color: #555; 
+        }
+        .value { 
+            color: #333; 
+            font-weight: 500; 
+        }
+        .price-block { 
+            background: linear-gradient(135deg, #48bb78, #38a169); 
+            color: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            text-align: center; 
+            margin: 25px 0; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+        }
+        .price { 
+            font-size: 42px; 
+            font-weight: bold; 
+            margin: 10px 0; 
+        }
+        .confirmation { 
+            background: linear-gradient(135deg, #d4edda, #c3e6cb); 
+            border-left: 5px solid #28a745; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 0 8px 8px 0; 
+        }
+        .planning-block { 
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7); 
+            border-left: 5px solid #ffc107; 
+            padding: 20px; 
+            margin: 20px 0; 
+            border-radius: 0 8px 8px 0; 
+        }
+        .services-list { 
+            background: #e3f2fd; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin: 15px 0; 
+        }
+        .services-list ul { 
+            margin: 10px 0; 
+            padding-left: 20px; 
+        }
+        .services-list li { 
+            margin: 8px 0; 
+            color: #1976d2; 
+        }
+        .contact-block { 
+            background: linear-gradient(135deg, #f1f3f4, #e8eaf6); 
+            padding: 20px; 
+            border-radius: 8px; 
+            text-align: center; 
+        }
+        .contact-block a { 
+            color: #0077b6; 
+            text-decoration: none; 
+            font-weight: 600; 
+        }
+        .footer { 
+            text-align: center; 
+            margin-top: 30px; 
+            padding: 20px; 
+            color: #666; 
+            font-size: 14px; 
+            background: #f8f9fa; 
+            border-radius: 0 0 10px 10px; 
+        }
+        .emoji { 
+            font-size: 1.2em; 
+        }
+        @media (max-width: 600px) {
+            .container { 
+                margin: 10px; 
+            }
+            .header, .content { 
+                padding: 20px; 
+            }
+            .info-row { 
+                flex-direction: column; 
+            }
+            .price { 
+                font-size: 32px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏄‍♂️ Confirmation WindVenture</h1>
+            <p>Votre aventure kitesurf vous attend à Dakhla !</p>
+        </div>
+        
+        <div class="content">
+            <div class="confirmation">
+                <h2 style="margin-top: 0; color: #155724;">🎉 Bonjour {{1.name}} !</h2>
+                <p style="color: #155724; font-size: 16px;">
+                    <strong>Votre demande de réservation a bien été reçue.</strong><br>
+                    Notre équipe vous contactera sous <strong>24 heures</strong> pour finaliser votre séjour et répondre à toutes vos questions.
+                </p>
+            </div>
+            
+            <!-- Récapitulatif Client -->
+            <div class="info-block">
+                <h3><span class="emoji">👤</span> Vos Informations</h3>
+                <div class="info-row">
+                    <span class="label">Nom :</span>
+                    <span class="value">{{1.name}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Email :</span>
+                    <span class="value">{{1.email}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Téléphone :</span>
+                    <span class="value">{{1.phone}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Niveau :</span>
+                    <span class="value">{{1.level}}</span>
+                </div>
+            </div>
+            
+            <!-- Package Sélectionné -->
+            <div class="info-block">
+                <h3><span class="emoji">📦</span> Package Sélectionné</h3>
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h4 style="margin: 0; color: #1976d2; font-size: 20px;">{{1.package}}</h4>
+                </div>
+                <div class="info-row">
+                    <span class="label">Arrivée :</span>
+                    <span class="value">{{formatDate(1.checkin; "DD/MM/YYYY")}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Départ :</span>
+                    <span class="value">{{formatDate(3.["Date Départ"]; "DD/MM/YYYY")}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Durée :</span>
+                    <span class="value">{{3.["Durée Séjour"]}} jours</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Participants :</span>
+                    <span class="value">{{1.participants}} personne(s)</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Formation :</span>
+                    <span class="value">{{3.["Heures Formation"]}} heures</span>
+                </div>
+            </div>
+            
+            <!-- Prix Total -->
+            <div class="price-block">
+                <div style="font-size: 18px; opacity: 0.9;">Prix Total Estimé</div>
+                <div class="price">{{3.["Prix Total"]}}€</div>
+                <div style="font-size: 16px; opacity: 0.8;">
+                    {{3.["Heures Formation"]}}h de formation • {{3.["Durée Séjour"]}} jours
+                </div>
+            </div>
+            
+            <!-- Planning -->
+            {{#if 3.["Planning Cours"]}}
+            <div class="planning-block">
+                <h3 style="margin-top: 0; color: #856404;"><span class="emoji">📋</span> Planning Prévisionnel</h3>
+                <p style="color: #856404; font-weight: 500; margin: 0;">
+                    {{3.["Planning Cours"]}}
+                </p>
+            </div>
+            {{/if}}
+            
+            <!-- Services Extra -->
+            {{#if 1.services}}
+            <div class="services-list">
+                <h3 style="color: #1976d2; margin-top: 0;"><span class="emoji">➕</span> Services Supplémentaires Demandés</h3>
+                <ul>
+                {{#each 1.services}}
+                    <li>{{this}}</li>
+                {{/each}}
+                </ul>
+            </div>
+            {{/if}}
+            
+            <!-- Hébergement -->
+            {{#if 1.accommodation}}
+            <div class="info-block">
+                <h3><span class="emoji">🏨</span> Hébergement</h3>
+                <p style="color: #0077b6; font-weight: 500; margin: 0;">
+                    {{1.accommodation}}
+                </p>
+            </div>
+            {{/if}}
+            
+            <!-- Notes -->
+            {{#if 1.notes}}
+            <div class="info-block">
+                <h3><span class="emoji">📝</span> Vos Notes & Demandes</h3>
+                <p style="color: #555; font-style: italic; margin: 0;">
+                    "{{1.notes}}"
+                </p>
+            </div>
+            {{/if}}
+            
+            <!-- Contact & Suivi -->
+            <div class="contact-block">
+                <h3 style="color: #0077b6; margin-top: 0;"><span class="emoji">📞</span> Prochaines Étapes</h3>
+                <p style="margin: 15px 0;">
+                    <strong>Notre équipe vous contactera sous 24h</strong><br>
+                    Nous confirmerons tous les détails et répondrons à vos questions.
+                </p>
+                <p style="margin: 15px 0;">
+                    <strong>Email :</strong> <a href="mailto:contact@windventure.fr">contact@windventure.fr</a><br>
+                    <strong>Une question urgente ?</strong> Répondez directement à cet email.
+                </p>
+            </div>
+            
+            <!-- Informations Pratiques -->
+            <div class="info-block" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+                <h3 style="color: #0277bd;"><span class="emoji">ℹ️</span> Informations Pratiques</h3>
+                <ul style="color: #01579b; margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Météo :</strong> Dakhla bénéficie de 300+ jours de vent par an</li>
+                    <li><strong>Matériel :</strong> Tout l'équipement est fourni (dernier cri)</li>
+                    <li><strong>Niveau :</strong> Nos instructeurs s'adaptent à votre progression</li>
+                    <li><strong>Sécurité :</strong> Encadrement professionnel et assurance incluse</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p style="margin: 0;"><strong>WindVenture Dakhla</strong> - Votre école de kitesurf premium au Maroc</p>
+            <p style="margin: 5px 0;">📍 Dakhla, Maroc | 🌐 windventure.fr</p>
+            <p style="margin: 5px 0; font-size: 12px; color: #999;">
+                Réservation reçue le {{formatDate(now; "DD/MM/YYYY à HH:mm")}} | ID: {{2.id}}
+            </p>
+            <p style="margin: 15px 0 0 0; color: #999; font-size: 12px;">
+                © 2025 WindVenture. Tous droits réservés.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

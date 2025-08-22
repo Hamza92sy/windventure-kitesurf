@@ -1,0 +1,3 @@
+=== LIGHTHOUSE SCORES ===
+Rapport Lighthouse généré: lighthouse_report.json
+

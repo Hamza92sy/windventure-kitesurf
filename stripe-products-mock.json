@@ -1,0 +1,52 @@
+{
+  "migrationDate": "2025-08-22T12:21:00.000Z",
+  "packages": [
+    {
+      "packageId": "beginner-private",
+      "productId": "prod_QxWvYzABCD12345",
+      "priceId": "price_1QxWvYzABCD12345678901",
+      "amount": 720,
+      "maxPersons": 1,
+      "isPerPerson": false,
+      "estimatedMargin": 88
+    },
+    {
+      "packageId": "semi-private-discovery",
+      "productId": "prod_QxWvYzABCD54321",
+      "priceId": "price_1QxWvYzABCD54321012345",
+      "amount": 380,
+      "maxPersons": 4,
+      "isPerPerson": true,
+      "estimatedMargin": 692
+    },
+    {
+      "packageId": "semi-private-experience", 
+      "productId": "prod_QxWvYzABCD11111",
+      "priceId": "price_1QxWvYzABCD11111222222",
+      "amount": 580,
+      "maxPersons": 4,
+      "isPerPerson": true,
+      "estimatedMargin": 972
+    },
+    {
+      "packageId": "exploration-adventure",
+      "productId": "prod_QxWvYzABCD22222",
+      "priceId": "price_1QxWvYzABCD22222333333",
+      "amount": 750,
+      "maxPersons": 4,
+      "isPerPerson": true,
+      "estimatedMargin": 1350
+    },
+    {
+      "packageId": "combined-ultimate",
+      "productId": "prod_QxWvYzABCD33333",
+      "priceId": "price_1QxWvYzABCD33333444444",
+      "amount": 950,
+      "maxPersons": 4,
+      "isPerPerson": true,
+      "estimatedMargin": 1830
+    }
+  ],
+  "totalProducts": 5,
+  "estimatedAnnualGain": 35200
+}

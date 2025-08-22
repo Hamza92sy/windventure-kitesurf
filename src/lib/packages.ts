@@ -1,4 +1,10 @@
-// 📦 Windventure Packages Configuration
+// 🚀 MIGRATION VERS PACKAGES OPTIMISÉS 4 PERSONNES
+// DEPRECATED: Utilisez packages-optimized.ts à la place
+
+// Réexport temporaire pour compatibilité
+export * from '../data/packages-optimized';
+
+// 📦 Windventure Packages Configuration LEGACY
 // Données centralisées pour tous les packages kitesurf
 
 export interface Package {
@@ -264,7 +270,8 @@ export const PackageUtils = {
   },
 };
 
-// Export par défaut
+// ⚠️ DEPRECATED - Utilisez packages-optimized.ts
+// Export temporaire pour migration progressive
 const packagesModule = {
   PACKAGES_DATA,
   categoryColors,
@@ -272,3 +279,9 @@ const packagesModule = {
 };
 
 export default packagesModule;
+
+// Réexport depuis packages-optimized pour nouvelle API
+export { 
+  packagesOptimized as PACKAGES_OPTIMIZED,
+  calculatePackageTotal
+} from '../data/packages-optimized';

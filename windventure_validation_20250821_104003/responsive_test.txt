@@ -1,0 +1,8 @@
+=== RESPONSIVE TEST ===
+Desktop (Chrome):
+<title>WindVenture - Ultimate Kitesurf Experience in Dakhla, Morocco
+Mobile (iPhone):
+<title>WindVenture - Ultimate Kitesurf Experience in Dakhla, Morocco
+Mobile (Android):
+<title>WindVenture - Ultimate Kitesurf Experience in Dakhla, Morocco
+

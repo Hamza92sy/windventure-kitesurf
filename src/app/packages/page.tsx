@@ -12,7 +12,7 @@ import {
   Clock,
   Sparkles,
 } from 'lucide-react';
-import { PACKAGES_DATA } from '../../lib/packages';
+import { packagesOptimized as PACKAGES_DATA } from '../../data/packages-optimized';
 
 const categoryColors = {
   beginner: 'from-emerald-400 via-teal-500 to-cyan-600',
@@ -216,7 +216,7 @@ export default function Packages() {
                     {/* Package Content */}
                     <div className='p-8'>
                       <h2 className='text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors'>
-                        {pkg.title}
+                        {pkg.name}
                       </h2>
 
                       {/* Price */}
@@ -233,7 +233,7 @@ export default function Packages() {
 
                       {/* Description */}
                       <p className='text-gray-300 mb-6 leading-relaxed'>
-                        {pkg.description}
+                        {pkg.shortDescription}
                       </p>
 
                       {/* Features */}

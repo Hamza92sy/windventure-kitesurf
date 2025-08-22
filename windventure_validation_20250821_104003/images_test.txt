@@ -1,0 +1,5 @@
+=== IMAGES OPTIMIZATION ===
+Images détectées (échantillon):
+
+Formats d'images:
+

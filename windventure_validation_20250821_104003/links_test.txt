@@ -1,0 +1,5 @@
+=== BROKEN LINKS CHECK ===
+Liens trouvés sur la homepage:
+
+Test des liens internes:
+

@@ -1,0 +1,7 @@
+=== STRIPE WEBHOOK TEST ===
+Timestamp: Thu Aug 21 10:51:01 +01 2025
+
+Testing webhook endpoint...
+Webhook Response: {"error":"Webhook error"}400
+❌ WEBHOOK FAILED - Status: {"error":"Webhook error"}400
+
