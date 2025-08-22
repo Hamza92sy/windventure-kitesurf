@@ -1,7 +1,7 @@
 // 📄 PAGE SUCCESS RÉSERVATION - WINDVENTURE 4 PERSONNES
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 interface SessionData {
@@ -17,7 +17,8 @@ interface SessionData {
   };
 }
 
-export default function BookingSuccess() {
+// Component pour gérer les paramètres de recherche
+function BookingSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
   const [sessionData, setSessionData] = useState<SessionData | null>(null);
@@ -196,5 +197,26 @@ export default function BookingSuccess() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Composant de fallback pour le chargement
+function BookingSuccessLoading() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Chargement de votre confirmation...</p>
+      </div>
+    </div>
+  );
+}
+
+// Export principal avec Suspense
+export default function BookingSuccess() {
+  return (
+    <Suspense fallback={<BookingSuccessLoading />}>
+      <BookingSuccessContent />
+    </Suspense>
   );
 }
