@@ -33,34 +33,28 @@ const BookingComponent: React.FC<BookingComponentProps> = ({
 }) => {
   const searchParams = useSearchParams();
   
-  // 🎯 CORRECTION: Lire package depuis URL d'abord
+  // 🎯 CORRECTION: Initialisation sans searchParams pour éviter erreurs SSR
   const getInitialPackageId = (): string => {
-    // 1. Paramètre URL en priorité
-    const urlPackageId = searchParams.get('package');
-    if (urlPackageId && optimizedPackages.find(pkg => pkg.id === urlPackageId)) {
-      console.log('📦 Package depuis URL:', urlPackageId);
-      return urlPackageId;
-    }
-    
-    // 2. Package fourni en props
+    // 1. Package fourni en props
     if (selectedPackage?.id && optimizedPackages.find(pkg => pkg.id === selectedPackage.id)) {
       console.log('📦 Package depuis props:', selectedPackage.id);
       return selectedPackage.id;
     }
     
-    // 3. Package populaire par défaut (pas Beginner Private)
+    // 2. Package populaire par défaut (pas Beginner Private)
     const popularPackage = optimizedPackages.find(pkg => pkg.isPopular && pkg.category === 'group');
     if (popularPackage) {
       console.log('📦 Package populaire par défaut:', popularPackage.id);
       return popularPackage.id;
     }
     
-    // 4. Premier package en dernier recours
+    // 3. Premier package en dernier recours
     console.log('📦 Premier package par défaut:', optimizedPackages[0]?.id);
     return optimizedPackages[0]?.id || 'semi-private-discovery';
   };
 
   const [selectedPackageId, setSelectedPackageId] = useState<string>(getInitialPackageId());
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
   const [personsCount, setPersonsCount] = useState<number>(1);
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
@@ -69,9 +63,21 @@ const BookingComponent: React.FC<BookingComponentProps> = ({
   // Obtenir package sélectionné
   const currentPackage = optimizedPackages.find(pkg => pkg.id === selectedPackageId);
 
-  // 🎯 CORRECTION: Mettre à jour quand URL change
+  // 🎯 CORRECTION: Initialisation et mise à jour depuis URL
   useEffect(() => {
     const urlPackageId = searchParams.get('package');
+    
+    // Première initialisation avec paramètre URL
+    if (!isInitialized) {
+      if (urlPackageId && optimizedPackages.find(pkg => pkg.id === urlPackageId)) {
+        console.log('🔄 Initialisation avec URL package:', urlPackageId);
+        setSelectedPackageId(urlPackageId);
+      }
+      setIsInitialized(true);
+      return;
+    }
+    
+    // Changements ultérieurs d'URL
     if (urlPackageId && optimizedPackages.find(pkg => pkg.id === urlPackageId)) {
       console.log('🔄 URL package changé:', urlPackageId);
       setSelectedPackageId(urlPackageId);
@@ -84,18 +90,18 @@ const BookingComponent: React.FC<BookingComponentProps> = ({
         setPersonsCount(2); // Valeur par défaut pour groupe
       }
     }
-  }, [searchParams]);
+  }, [searchParams, isInitialized]);
 
-  // 🎯 CORRECTION: Ajuster personnes selon package sélectionné
+  // 🎯 CORRECTION: Ajuster personnes selon package sélectionné (éviter boucles)
   useEffect(() => {
-    if (currentPackage) {
+    if (currentPackage && isInitialized) {
       if (currentPackage.category === 'private' && personsCount !== 1) {
         setPersonsCount(1);
       } else if (currentPackage.category !== 'private' && personsCount > currentPackage.maxPersons) {
         setPersonsCount(Math.min(personsCount, currentPackage.maxPersons));
       }
     }
-  }, [selectedPackageId, currentPackage]);
+  }, [selectedPackageId, currentPackage, isInitialized]);
 
   // Calculer dates fin automatiquement
   useEffect(() => {
