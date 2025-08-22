@@ -1,4 +1,6 @@
 // NOUVEAU CODE POUR LA SECTION PACKAGES - À COPIER DANS app/page.tsx
+import Link from 'next/link';
+import { CheckCircle } from 'lucide-react';
 
 {/* Packages Section - OPTIMIZED 4 PERSONS */}
 <section id="packages" className="py-20 bg-gradient-to-b from-white to-cyan-50/30">

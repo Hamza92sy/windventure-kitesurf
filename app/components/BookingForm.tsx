@@ -27,7 +27,7 @@ export default function BookingForm() {
         const pkgId = searchParams.get('package');
         console.log('=== HAMZA DEBUG FIX ===');
         console.log('Package ID from searchParams:', pkgId);
-        console.log('Available packages:', PACKAGES_DATA.map(p => ({id: p.id, title: p.title})));
+        console.log('Available packages:', PACKAGES_DATA.map(p => ({id: p.id, name: p.name})));
         
         setPackageId(pkgId);
         
@@ -164,7 +164,7 @@ export default function BookingForm() {
       {/* Package Summary */}
       <div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl border border-blue-100">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-2xl font-bold text-gray-900">{selectedPackage.title}</h3>
+          <h3 className="text-2xl font-bold text-gray-900">{selectedPackage.name}</h3>
           {selectedPackage.isPopular && (
             <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold">
               ⭐ Most Popular
@@ -340,7 +340,7 @@ export default function BookingForm() {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span>Package:</span>
-                <span className="font-medium">{selectedPackage.title}</span>
+                <span className="font-medium">{selectedPackage.name}</span>
               </div>
               <div className="flex justify-between">
                 <span>Price per person:</span>

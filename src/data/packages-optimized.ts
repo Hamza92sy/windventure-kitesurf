@@ -312,6 +312,11 @@ export const packageUtils = {
   // Obtenir packages par catégorie
   getPackagesByCategory: (category: Package['category']) => {
     return packagesOptimized.filter(pkg => pkg.category === category);
+  },
+
+  // Trouver package par ID (requis par API)
+  findById: (packageId: string): Package | undefined => {
+    return packagesOptimized.find(pkg => pkg.id === packageId);
   }
 };
 

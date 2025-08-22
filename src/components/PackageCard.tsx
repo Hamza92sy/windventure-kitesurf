@@ -28,6 +28,15 @@ const PackageCard: React.FC<PackageCardProps> = ({
   // Utiliser package fourni ou premier package optimisé
   const currentPkg = pkg || packageProp || optimizedPackages[0];
 
+  // Guard clause pour package manquant
+  if (!currentPkg) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        <p className="text-red-800">Package non trouvé</p>
+      </div>
+    );
+  }
+
   // Calculer prix affichage selon type
   const isPrivatePackage = currentPkg.category === 'private';
   const displayPrice = currentPkg.price;

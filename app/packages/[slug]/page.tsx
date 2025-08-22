@@ -27,7 +27,7 @@ export default function PackagePage({ params }: PackagePageProps) {
             <span>→</span>
             <Link href="/packages" className="hover:text-blue-600">Packages</Link>
             <span>→</span>
-            <span className="text-gray-900 font-medium">{pkg.title}</span>
+            <span className="text-gray-900 font-medium">{pkg.name}</span>
           </nav>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function PackagePage({ params }: PackagePageProps) {
               )}
               
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                {pkg.title}
+                {pkg.name}
               </h1>
               
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -102,11 +102,11 @@ export default function PackagePage({ params }: PackagePageProps) {
             </div>
 
             {/* Detailed Includes */}
-            {pkg.includes && pkg.includes.length > 0 && (
+            {pkg.included && pkg.included.length > 0 && (
               <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Complete Package Details</h2>
                 <div className="space-y-3">
-                  {pkg.includes.map((item, index) => (
+                  {pkg.included.map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-700">{item}</span>
@@ -116,30 +116,30 @@ export default function PackagePage({ params }: PackagePageProps) {
               </div>
             )}
 
-            {/* Requirements */}
-            {pkg.requirements && pkg.requirements.length > 0 && (
+            {/* Features */}
+            {pkg.features && pkg.features.length > 0 && (
               <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Requirements</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Package Features</h2>
                 <div className="space-y-3">
-                  {pkg.requirements.map((requirement, index) => (
+                  {pkg.features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <span className="text-gray-700">{requirement}</span>
+                      <span className="text-gray-700">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Highlights */}
-            {pkg.highlights && pkg.highlights.length > 0 && (
+            {/* Additional Info */}
+            {pkg.included && pkg.included.length > 3 && (
               <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Package Highlights</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional Services</h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {pkg.highlights.map((highlight, index) => (
+                  {pkg.included.slice(3).map((service, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <Star className="h-5 w-5 text-cyan-600" />
-                      <span className="text-gray-800 font-medium">{highlight}</span>
+                      <span className="text-gray-800 font-medium">{service}</span>
                     </div>
                   ))}
                 </div>

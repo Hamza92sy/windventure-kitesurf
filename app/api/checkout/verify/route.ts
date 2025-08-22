@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
       amountPaid: (session.amount_total || 0) / 100, // Convert from cents
       currency: session.currency,
       packageId,
-      packageName: packageInfo?.title || 'Unknown Package',
+      packageName: packageInfo?.name || 'Unknown Package',
       participants: parseInt(session.metadata?.participants || '1'),
       customer: {
         email: session.customer_email,

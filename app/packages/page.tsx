@@ -39,7 +39,7 @@ export default function PackagesPage() {
               )}
               
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{pkg.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{pkg.name}</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">{pkg.description}</p>
                 
                 <div className="text-4xl font-bold text-blue-600 mb-2">
@@ -57,15 +57,15 @@ export default function PackagesPage() {
                 {/* Features */}
                 <div className="space-y-3 mb-8">
                   <h4 className="font-semibold text-gray-900 mb-3">What's included:</h4>
-                  {pkg.features.slice(0, 3).map((feature, idx) => (
+                  {pkg.features?.slice(0, 3).map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600" />
                       <span className="text-gray-700">{feature}</span>
                     </div>
                   ))}
-                  {pkg.features.length > 3 && (
+                  {pkg.features && pkg.features.length > 3 && (
                     <p className="text-sm text-gray-500 italic">
-                      +{pkg.features.length - 3} more features
+                      +{pkg.features?.length ? pkg.features.length - 3 : 0} more features
                     </p>
                   )}
                 </div>
