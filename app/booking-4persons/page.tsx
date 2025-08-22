@@ -1,7 +1,7 @@
 // 🎯 PAGE TEST RÉSERVATION 4 PERSONNES - WINDVENTURE
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import BookingComponent from '../../src/components/BookingComponent';
 import StripeCheckout from '../../src/components/StripeCheckout';
 
@@ -86,7 +86,15 @@ export default function Booking4PersonsPage() {
         {/* Content */}
         {step === 'booking' && (
           <div>
-            <BookingComponent onBookingChange={handleBookingChange} />
+            <Suspense fallback={
+              <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p className="text-gray-600">Chargement du formulaire de réservation...</p>
+                <p className="text-sm text-gray-400 mt-2">Lecture des paramètres URL...</p>
+              </div>
+            }>
+              <BookingComponent onBookingChange={handleBookingChange} />
+            </Suspense>
             
             {/* Continue Button */}
             {bookingData?.isValid && (
