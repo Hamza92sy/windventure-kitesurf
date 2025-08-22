@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { packagesNew, findPackageById, Package } from '@/data/packages-new';
+import { optimizedPackages, packageUtils, type Package } from '@/data/packages-optimized';
 import { Calendar, Users, Phone, Mail, MapPin, CheckCircle } from 'lucide-react';
 
 interface BookingData {
@@ -18,7 +18,7 @@ interface BookingData {
 export default function BookingFormNew() {
   const searchParams = useSearchParams();
   const packageId = searchParams.get('package');
-  const selectedPackage = findPackageById(packageId || '');
+  const selectedPackage = packageUtils.findById(packageId || '');
 
   const [formData, setFormData] = useState<BookingData>({
     firstName: '',

@@ -1,251 +1,187 @@
-'use client';
+// 🔧 CORRECTION AFFICHAGE PRIX - COMPOSANTS PACKAGES
+// Fichier à créer/remplacer : src/components/PackageCard.tsx
 
+import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-
-// 🚨 CURSOR CRITICAL FIX - 2025-07-25 20:35 UTC
-// FORCE DEPLOYMENT REFRESH - BUTTON MUST POINT TO /book
-// VERCEL: DEPLOY THIS VERSION NOW!
-interface Package {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-  features: string[];
-  isPopular?: boolean;
-}
+import { optimizedPackages } from '@/data/packages-optimized';
+import type { Package } from '@/data/packages-optimized';
 
 interface PackageCardProps {
-  pkg: Package;
-  categoryColors: Record<string, string>;
-  categoryIcons: Record<string, string>;
+  pkg?: Package;
+  package?: Package;
+  showPerPersonPricing?: boolean;
+  categoryColors?: Record<string, string>;
+  categoryIcons?: Record<string, string>;
   className?: string;
   onClick?: () => void;
 }
 
-// 🎯 CRITICAL COMPONENT - BUTTON VISIBILITY FIX
-export default function PackageCard({
+const PackageCard: React.FC<PackageCardProps> = ({ 
   pkg,
+  package: packageProp,
+  showPerPersonPricing = true,
   categoryColors,
   categoryIcons,
   className = '',
-  onClick,
-}: PackageCardProps) {
-  // Hooks must be called before any early returns
-  const [isHovered, setIsHovered] = useState(false);
-  
-  if (!pkg) {
-    console.warn('PackageCard: pkg prop is undefined. Not rendering.');
-    return null; // Or render a placeholder/error message
-  }
-  console.log('Rendering PackageCard with pkg:', pkg);
-  const gradientClass =
-    categoryColors[pkg.category as keyof typeof categoryColors];
-  const icon = categoryIcons[pkg.category as keyof typeof categoryIcons];
+  onClick
+}) => {
+  // Utiliser package fourni ou premier package optimisé
+  const currentPkg = pkg || packageProp || optimizedPackages[0];
 
-  // Variants d'animation
-  const cardVariants = {
-    initial: {
-      opacity: 0,
-      y: 50,
-      scale: 0.95,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-    hover: {
-      y: -10,
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: 'easeOut' as const,
-      },
-    },
-  };
-
-  const imageVariants = {
-    initial: { scale: 1 },
-    hover: {
-      scale: 1.1,
-      transition: { duration: 0.3, ease: 'easeOut' as const },
-    },
-  };
-
-  const badgeVariants = {
-    initial: { rotate: 0, scale: 1 },
-    hover: {
-      rotate: [0, 5, -5, 0],
-      scale: 1.1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeInOut' as const,
-      },
-    },
-  };
-
-  const featureVariants = {
-    initial: { opacity: 0, x: -20 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: 'easeOut' as const },
-    },
-  };
+  // Calculer prix affichage selon type
+  const isPrivatePackage = currentPkg.category === 'private';
+  const displayPrice = currentPkg.price;
+  const maxRevenue = isPrivatePackage ? currentPkg.price : (currentPkg.price * currentPkg.maxPersons);
 
   return (
-    <motion.div
-      className='relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group'
-      variants={cardVariants}
-      initial='initial'
-      animate='animate'
-      whileHover='hover'
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      data-testid="package-card"
-      role="article"
-      aria-labelledby={`package-title-${pkg.id}`}
-    >
-      {/* Popular Badge avec animation */}
-      {pkg.isPopular && (
-        <motion.div
-          className='absolute top-4 right-4 z-10'
-          variants={badgeVariants}
-          whileHover='hover'
-        >
-          <div className='bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 md:px-4 py-2 rounded-full text-sm font-bold shadow-lg'>
-            Most Popular ⭐
-          </div>
-        </motion.div>
-      )}
-
-      {/* Image avec effet parallaxe */}
-      <motion.div
-        className='relative h-64 overflow-hidden bg-gray-200'
-        variants={imageVariants}
-        whileHover='hover'
-      >
-        <div className='absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20' />
-
-        {/* Category Icon avec animation */}
-        <motion.div
-          className='absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center text-2xl shadow-lg'
-          whileHover={{
-            rotate: 360,
-            scale: 1.1,
-            transition: { duration: 0.5, ease: 'easeInOut' },
-          }}
-        >
-          {icon}
-        </motion.div>
-
-        {/* Overlay avec effet de hover */}
-        <motion.div
-          className='absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300'
-          initial={false}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-        />
-      </motion.div>
-
-      {/* Content avec animations */}
-      <div className='p-6 md:p-8 flex flex-col h-full'>
-        <div className='flex-grow'>
-          <motion.h3
-            id={`package-title-${pkg.id}`}
-            className='text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors'
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-          >
-            {pkg.title}
-          </motion.h3>
-
-          <div className='flex items-center gap-2 mb-4'>
-            <motion.div
-              className={`text-3xl md:text-4xl font-black bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent`}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-            >
-              €{pkg.price.toLocaleString()}
-            </motion.div>
-            <div className='text-sm text-gray-500 font-medium'>per person</div>
-          </div>
-
-          <p className='text-gray-600 mb-6 leading-relaxed'>
-            {pkg.description}
-          </p>
-
-          {/* Features avec animations séquentielles */}
-          <div className='space-y-2 mb-8'>
-            {pkg.features.map((feature, idx) => (
-              <motion.div
-                key={`${pkg.id}-feature-${idx}`}
-                className='flex items-center gap-3 text-sm'
-                variants={featureVariants}
-                initial='initial'
-                animate='animate'
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ x: 5 }}
-              >
-                <motion.div
-                  className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradientClass} flex-shrink-0`}
-                  whileHover={{ scale: 1.5 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                />
-                <span className='text-gray-700'>{feature}</span>
-              </motion.div>
-            ))}
+    <div className={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ${className}`}>
+      {/* Badge Populaire/Premium */}
+      {(currentPkg.isPopular || currentPkg.isPremium) && (
+        <div className="relative">
+          <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold z-10 ${
+            currentPkg.isPremium 
+              ? 'bg-purple-500 text-white' 
+              : 'bg-orange-500 text-white'
+          }`}>
+            {currentPkg.isPremium ? '💎 PREMIUM' : '⭐ POPULAIRE'}
           </div>
         </div>
+      )}
 
-        {/* 🚨 CRITICAL BUTTON - CURSOR URGENT FIX - FORCE DEPLOYMENT! */}
-        {/* 🎯 TIMESTAMP: 2025-07-25 20:35 UTC - VERCEL MUST DEPLOY THIS */}
-        {/* 🏄‍♂️ BUTTON MUST POINT TO /book NOT /contact */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
+      {/* Contenu Principal */}
+      <div className="p-6">
+        {/* En-tête Package */}
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            {currentPkg.name}
+          </h3>
+          <p className="text-gray-600 text-sm">
+            {currentPkg.shortDescription}
+          </p>
+        </div>
+
+        {/* Pricing Section - NOUVEAUX PRIX 4 PERSONNES */}
+        <div className="mb-6">
+          <div className="flex items-end gap-2 mb-2">
+            {/* Prix Principal */}
+            <span className="text-3xl font-bold text-blue-600">
+              {displayPrice.toLocaleString()}€
+            </span>
+            
+            {/* Par Personne ou Prix Fixe */}
+            <span className="text-gray-500 text-sm mb-1">
+              {isPrivatePackage ? '(privé)' : '/personne'}
+            </span>
+          </div>
+
+          {/* Détails Capacité */}
+          <div className="flex flex-wrap gap-2 mb-3">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              {currentPkg.duration}
+            </span>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+              {isPrivatePackage ? '1 personne' : `Max ${currentPkg.maxPersons} pers`}
+            </span>
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 capitalize">
+              {currentPkg.category}
+            </span>
+          </div>
+
+          {/* Calcul Groupe Complet */}
+          {!isPrivatePackage && (
+            <div className="bg-gray-50 rounded-lg p-3 mb-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Groupe complet ({currentPkg.maxPersons} pers):</span>
+                <span className="font-semibold text-gray-900">
+                  {maxRevenue.toLocaleString()}€ total
+                </span>
+              </div>
+              <div className="text-xs text-green-600 mt-1">
+                💰 Économie ~300€ vs packages pension complète
+              </div>
+            </div>
+          )}
+
+          {/* Comparaison Concurrence */}
+          {!isPrivatePackage && (
+            <div className="text-xs text-gray-500">
+              <span className="line-through text-red-500">
+                {(maxRevenue + 300).toLocaleString()}€
+              </span>
+              <span className="text-green-600 font-medium ml-2">
+                vs concurrence avec restauration
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Services Inclus */}
+        <div className="mb-6">
+          <h4 className="font-semibold text-gray-900 mb-3">✅ Inclus</h4>
+          <ul className="space-y-1">
+            {currentPkg.included.slice(0, 4).map((item, index) => (
+              <li key={index} className="flex items-start text-sm">
+                <span className="text-green-500 mr-2 mt-0.5 flex-shrink-0">✓</span>
+                <span className="text-gray-700">{item}</span>
+              </li>
+            ))}
+            {currentPkg.included.length > 4 && (
+              <li className="text-sm text-gray-500 italic">
+                + {currentPkg.included.length - 4} autres services...
+              </li>
+            )}
+          </ul>
+        </div>
+
+        {/* Bouton Réservation */}
+        <Link 
+          href={`/booking-4persons?package=${currentPkg.id}`}
+          className="block w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 text-center"
+          onClick={onClick}
         >
-          <Link
-            href={`/book?package=${pkg.id}`}
-            className='inline-block w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-4 px-6 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/50 focus:ring-offset-2 text-center'
-            style={{
-              display: 'block',
-              visibility: 'visible',
-              opacity: '1',
-              zIndex: '10',
-              position: 'relative',
-            }}
-            aria-label={`Book the ${pkg.title} package for €${pkg.price}`}
-            role="button"
-          >
-            <motion.span
-              className='flex items-center justify-center gap-2'
-              whileHover={{ gap: '0.75rem' }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-            >
-              🏄‍♂️ Book This Package
-              <motion.span
-                animate={{ x: isHovered ? 5 : 0 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-              >
-                →
-              </motion.span>
-            </motion.span>
-          </Link>
-        </motion.div>
-        {/* 🚨 END CRITICAL BUTTON SECTION */}
-      </div>
-    </motion.div>
-  );
-}
+          Réserver - {displayPrice}€{!isPrivatePackage ? '/pers' : ''}
+        </Link>
 
-// 🔧 FORCE DEPLOYMENT: This file updated at 2025-07-25 20:35 UTC
-// 📈 Vercel: Cache invalidation required - Deploy NOW!
+        {/* Note Transparence */}
+        <div className="mt-3 text-xs text-center text-gray-500">
+          Prix transparent • Sans frais cachés • Paiement sécurisé
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Composant Liste Packages avec Nouveaux Prix
+export const PackagesList: React.FC = () => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {optimizedPackages.map((pkg) => (
+        <PackageCard key={pkg.id} pkg={pkg} />
+      ))}
+    </div>
+  );
+};
+
+// Export composants avec prix forcés pour debug
+export const DebugPricing: React.FC = () => {
+  return (
+    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+      <h3 className="font-bold text-yellow-800 mb-2">🔧 Debug - Nouveaux Prix 4 Personnes</h3>
+      <div className="space-y-1 text-sm">
+        {optimizedPackages.map((pkg) => (
+          <div key={pkg.id} className="flex justify-between">
+            <span className="text-yellow-700">{pkg.name}:</span>
+            <span className="font-medium text-yellow-900">
+              {pkg.price}€{pkg.category !== 'private' ? `/pers (max ${pkg.maxPersons})` : ' (privé)'}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="text-xs text-yellow-600 mt-2">
+        Si vous voyez ces prix, la migration 4 personnes fonctionne ✅
+      </div>
+    </div>
+  );
+};
+
+export default PackageCard;

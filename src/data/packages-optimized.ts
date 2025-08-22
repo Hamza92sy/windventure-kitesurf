@@ -139,8 +139,8 @@ export const packagesOptimized: Package[] = [
   },
 
   {
-    id: 'exploration-adventure',
-    name: 'Exploration Adventure',
+    id: 'semi-private-exploration',
+    name: 'Semi-Private Exploration',
     price: 750,
     maxPersons: 4,
     duration: '6 jours',
@@ -346,7 +346,9 @@ export const calculatePackageTotal = (packageId: string, participants: number): 
   return packageUtils.calculateTotalPrice(packageId, participants);
 };
 
-// New alias for consistency
+// ✅ STANDARDIZED EXPORTS FOR CONSISTENCY
 export const optimizedPackages = packagesOptimized;
+export const packages = packagesOptimized; // Alias for legacy compatibility
+export const PACKAGES_DATA = packagesOptimized; // Alias for components expecting this name
 
-export default packagesOptimized;
+export default optimizedPackages;

@@ -22,7 +22,7 @@ import BookingPro from '../../../components/BookingPro';
 import TestimonialsMatrix from '../../../components/TestimonialsMatrix';
 
 // Import existing utilities
-import { PACKAGES_DATA, PackageUtils } from '../../../lib/packages';
+import { PACKAGES_DATA, packageUtils } from '../../../data/packages-optimized';
 
 interface PremiumPackagePageProps {
   slug: string;
@@ -112,7 +112,7 @@ export default function PremiumPackagePage({ slug }: PremiumPackagePageProps) {
 
   useEffect(() => {
     if (slug) {
-      const pkg = PackageUtils.findById(slug);
+      const pkg = packageUtils.findById(slug);
       if (pkg) {
         setSelectedPackage(pkg);
         setIsLoading(false);

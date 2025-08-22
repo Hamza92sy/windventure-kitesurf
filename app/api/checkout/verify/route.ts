@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { PackageUtils } from '@/lib/packages';
+import { packageUtils } from '@/data/packages-optimized';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       JSON.parse(session.metadata.customerData) : {};
 
     // Get package details
-    const packageInfo = PackageUtils.findById(packageId || '');
+    const packageInfo = packageUtils.findById(packageId || '');
 
     return NextResponse.json({
       sessionId: session.id,

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { PACKAGES_DATA } from '@/lib/packages';
+import { PACKAGES_DATA } from '@/data/packages-optimized';
 import { Calendar, Users, Phone, Mail, CheckCircle } from 'lucide-react';
 
 // Stripe Product IDs mapping

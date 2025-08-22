@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { PACKAGES_DATA } from '@/lib/packages';
+import { PACKAGES_DATA } from '@/data/packages-optimized';
 import { CheckCircle, Clock, Users, Star, ArrowRight, Calendar, MapPin } from 'lucide-react';
 
 interface PackagePageProps {

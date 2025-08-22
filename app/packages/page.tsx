@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { PACKAGES_DATA } from '@/lib/packages';
+import { PACKAGES_DATA } from '@/data/packages-optimized';
 import { CheckCircle, Star, ArrowRight } from 'lucide-react';
 
 export default function PackagesPage() {

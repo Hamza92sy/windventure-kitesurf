@@ -9,7 +9,12 @@ import TestimonialsMatrix from '../components/TestimonialsMatrix';
 import FooterMinimal from '../components/FooterMinimal';
 import { Star, Shield, Users, Trophy, Wind, MapPin } from 'lucide-react';
 import Link from 'next/link';
-import { PACKAGES_DATA, categoryColors } from '../lib/packages';
+import { PACKAGES_DATA } from '../data/packages-optimized';
+const categoryColors = {
+  private: 'from-emerald-400 via-teal-500 to-cyan-600',
+  group: 'from-orange-400 via-red-500 to-pink-600', 
+  premium: 'from-purple-400 via-violet-500 to-indigo-600',
+};
 import PackageCard from '../components/PackageCard';
 
 // Sample gallery images for GalleryPlus
